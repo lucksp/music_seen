@@ -1,0 +1,4 @@
+.DS_Store
+apiKey.txt
+lastFnSecret.txt
+node_modules

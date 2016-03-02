@@ -1,0 +1,30 @@
+{
+  "name": "mtv",
+  "version": "1.0.0",
+  "description": "music thru visualization",
+  "main": "server.js",
+  "dependencies": {
+    "bcrypt-nodejs": "^0.0.3",
+    "body-parser": "^1.15.0",
+    "cookie-parser": "^1.4.1",
+    "express": "^4.13.4",
+    "express-session": "^1.13.0",
+    "lastfmapi": "0.0.7",
+    "mongoose": "^4.4.5",
+    "morgan": "^1.7.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lucksp/mtv.git"
+  },
+  "author": "philip lucks",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lucksp/mtv/issues"
+  },
+  "homepage": "https://github.com/lucksp/mtv#readme"
+}
