@@ -1,4 +1,4 @@
 .DS_Store
 apiKey.txt
-lastFnSecret.txt
+lastFmSecret.txt
 node_modules
