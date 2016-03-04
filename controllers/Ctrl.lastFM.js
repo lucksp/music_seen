@@ -2,24 +2,38 @@
 var LastfmAPI 		= require('lastfmapi');
 var fs 				= require('fs')
 var apiKey 			= fs.readFileSync('../apiKey.txt', 'utf-8')
-var country			= require('./countries.iso3166.json')
+var country			= require('./countries.geo.json')
 var lfm 			= new LastfmAPI({
 						'api_key' : apiKey,
 					});
 
 // http://ws.audioscrobbler.com/2.0/?method=geo.getTopTracks&country=United%20States&api_key=55e41733ce0e5741e9315caf921230a1
-for(var i = 0; i < country.length; i++){
-	console.log('The country is: ', country[i].name)
+
+var countryData = function (name){
 	lfm.geo.getTopTracks({
-	  country: country[i].name,
-	  limit: 3
-	}, function (err, tracks) {
-	  if (err) {
-	    return console.log('OMG!', err);
-	  }
-	  console.log(tracks.track);
-	})
-};
+		  country: name,
+		  limit: 1
+		}, function (err, tracks) {
+		if (err) {
+		    return console.log('OMG!', err, name);
+		}
+		  console.log(name, tracks.track);
+		})
+}
+for(var i = 0; i < country.features.length; i++){
+	var name = country.features[i].properties.name
+	countryData(name)
+}
+
+// lfm.geo.getTopTracks({
+// 	  country: 'Korea, Democratic People\'s Republic of',
+// 	  limit: 1
+// 	}, function (err, tracks) {
+// 	  if (err) {
+// 	    return console.log('OMG!', err);
+// 	  }
+// 	  // console.log('Yugoslavia', tracks.track);
+// 	})
 
 
 // Geo.prototype.getMetros = function (country, callback) {

@@ -21,11 +21,11 @@ var configDB 		= require('./config/database.js');
 // require('./config/passport')(passport); // pass passport for configuration
 
 // set up our express application
+app.use(express.static(__dirname + '/public'))
+
 // app.use(morgan('dev')); // log every request to the console
 // app.use(cookieParser()); // read cookies (needed for auth)
 // app.use(bodyParser()); // get information from html forms
-
-// app.set('view engine', 'ejs'); // set up ejs for templating
 
 // required for passport
 // app.use(session({ secret: 'ilovelamp' })); // session secret
@@ -35,7 +35,12 @@ var configDB 		= require('./config/database.js');
 
 // routes ======================================================================
 // require('./app/routes.js')(app, passport); // load our routes and pass in our app and fully configured passport
+// home route
+app.get('/', function (req, res) {
+  res.sendFile('map.html', {root: './public/html'})
+})
+
 
 // launch ======================================================================
 app.listen(port);
-console.log('The magic happens on port ' + port);
+console.log('Up and running on Port: ' + port);
