@@ -3,9 +3,56 @@
 <head>
     <title>Music Seen: Visualize Music with Maps</title>
     <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
 </head>
 <body>
 
 <a href="/insights">Click to view maps</a>
+<a href="/profile">Access Profile</a>
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+  Launch demo modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">Insert title</h4>
+      </div>
+      <div class="modal-body">
+      	<!-- LOGIN -->
+        <form>
+          <fieldset class="form-group">
+            <label for="loginUserName">User Name</label>
+            <input type="email" class="form-control" id="loginUserName" placeholder="User Name" ng-model="registerForm.username">
+          </fieldset>
+          <fieldset class="form-group">
+            <label for="loginPassword">Password</label>
+            <input type="password" class="form-control" id="loginPassword" placeholder="Password" ng-model="registerForm.password">
+          </fieldset>
+      </div>
+      <div class="modal-footer">
+        <a type="submit" class="btn btn-primary" data-dismiss="modal" href="/profile">Sign In</button>
+        <a type="button" class="btn btn-secondary" href="/register">Register Your Band</a>
+      </div>
+  		</form>
+    </div>
+  </div>
+</div>
+
 </body>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.min.js" type="text/javascript"></script>
+	 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular.js" type="text/javascript"></script>
+    <script src="/js/app.js" type="text/javascript"></script>
+    <script src="/js/controller.js" type="text/javascript"></script>
+    <script src="/js/factory.js" type="text/javascript"></script>
+    <script src="/js/controller.js" type="text/javascript" ></script>
 </html>

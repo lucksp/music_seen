@@ -14,7 +14,7 @@ var lfm 			= new LastfmAPI({
 			  limit: 5
 			}, function (err, tracks) {
 			if (err) {
-			    return console.log('OMG!', err, name);
+			    return 'OMG!', err, name;
 			}
 			  // console.log(name, tracks.track);
 			})
