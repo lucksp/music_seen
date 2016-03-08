@@ -1,8 +1,8 @@
 angular.module('musicSeen')
-    .controller('controllMusicSeen',['$scope', '$http', 'musicSeenFactory', function($scope, $http, musicSeenFactory){
+    .controller('controllInsights',['$scope', '$http', 'insightFactory', function($scope, $http, insightFactory){
 
 
-        // musicSeenFactory.get().then(function(responseData){
+        // insightFactory.get().then(function(responseData){
         //     $scope.myGeoJSONPath = responseData.data
 
         //         console.log('Angular got the geoJson file from server', $scope.myGeoJSONPath)

@@ -1,15 +1,31 @@
 <!DOCTYPE html>
 <html ng-app="musicSeen">
 <head>
-    <title>Music Seen: Visualize Music with Maps</title>
+    <title>Music Seen: Map Your Music Here</title>
     <meta charset="utf-8" />
 
     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.1/leaflet.css" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
+
 </head>
 
-<body ng-controller="controllMusicSeen">
-<h1>THIS IS A MAP TEST</h1>
-    <div id="map"></div>
+<body ng-controller="controlInsights">
+    <div class="container">
+        <div class="row col-xs-12">
+            <h2>Music, Seen</h2>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row col-md-12">
+            <select class="insightSelector">
+                <option value="genre">Category</option>
+                <option value="topTracks">Top Tracks</option>
+            </select>
+            <div id="map"></div>
+        </div>
+    </div>
+    <!-- <div>
     <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
         <script src="http://cdn.leafletjs.com/leaflet-0.7.1/leaflet.js"></script>
         <script>
@@ -17,7 +33,7 @@
         var myCustomStyle = {
             stroke: false,
             fill: true,
-            fillColor: '#fff',
+            fillColor: '#000',
             fillOpacity: 1
         }
         $.getJSON(myGeoJSONPath,function(data){
@@ -29,11 +45,13 @@
             }).addTo(map);
         })
     </script>
+</div> -->
 </body>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular.js" type="text/javascript"></script>
+    <script src="/js/bootstrap.min.js" type="text/javascript"></script>
     <script src="/js/app.js" type="text/javascript"></script>
-    <script src="/js/controller.js" type="text/javascript"></script>
+    <script src="/js/controlInsights.js" type="text/javascript"></script>
     <script src="/js/factory.js" type="text/javascript"></script>
     <script src="/js/controller.js" type="text/javascript" ></script>
 </html>

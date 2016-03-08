@@ -1,5 +1,5 @@
 angular.module('musicSeen')
-	.factory('musicSeenFactory', ['$http', function($http){
+	.factory('insightFactory', ['$http', function($http){
 
 		return {
 				get 	: function(){

@@ -1,15 +1,73 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="musicSeen">
 <head>
-    <title>Music Seen: Visualize Music with Maps</title>
+    <title>Music Seen: Update Your Profile</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/styles.css">
 </head>
-<body>
-	You've been successfull logged in.
+<body ng-controller="controllMusicSeen">
+    <div class="container">
+        <div class="row col-xs-6">
+            <h3>Welcome back, {{user}}</h3>
+            <p>You last logged in {{date}}</p>           
+        </div>
+        <div class="row col-xs-6">
+            INSERT YOUR PROFILE PIC HERE
+        </div>
+    </div>
+    <!-- PROFILE EDITS -->
+    <div class="container">
+        <h5 ng-click="profileUpdate">Update Your Profile:</h5>
+        <form ng-submit="tourData" ng-hide="updateForm">
+            <fieldset class="form-group">
+            <label for="updateEmail">Email</label>
+            <input type="text" class="form-control" id="updateEmail" ng-model="update.email">
+          </fieldset>
+          <fieldset class="form-group">
+            <label for="updateLogo">Update Your Logo</label>
+            <input type="upload" class="form-control" id="updateLogo" ng-model="update.logo">
+          </fieldset>
+          <input type="submit" class="btn btn-primary">
+        </form>
+        <p ng-show="tourAdded">Thank you!</p>
+    </div>
+    <!-- TOUR DATES -->
+    <div class="container">
+        <h5 ng-click="tours">Add a new Tour:</h5>
+        <form ng-submit="tourData()" ng-hide="tourForm">
+            <fieldset class="form-group">
+            <label for="tourName">Tour Name</label>
+            <input type="text" class="form-control" id="tourName" placeholder="Name of Tour" ng-model="tour.name">
+          </fieldset>
+            <fieldset class="form-group">
+            <label for="tourLogo">Tour Logo</label>
+            <input type="upload" class="form-control" id="tourLogo" ng-model="tour.logo">
+          </fieldset>
+          <fieldset class="form-group">
+            <label for="tourName">Tour Name</label>
+            <input type="text" class="form-control" id="tourName" placeholder="Name of Tour" ng-model="tour.name">
+          </fieldset>
+          <fieldset class="form-group">
+            <label for="tourDates">Tour Dates</label>
+            <input type="date" class="form-control" id="tourDates" ng-model="tour.date">
+          </fieldset>
+          <fieldset class="form-group">
+            <label for="tourVenue">Venue Name</label>
+            <input type="text" class="form-control" id="tourVenue" placeholder="Venue" ng-model="tour.venue">
+          </fieldset>
+          <fieldset class="form-group">
+            <label for="tourAddress">Address</label>
+            <input type="text" class="form-control" id="tourAdress" placeholder="Address" ng-model="tour.address">
+          </fieldset>
+          <button type="button" class="btn btn-primary">+</button><span>Add More Dates</span><br>
+          <input type="submit" class="btn btn-primary">
+        </form>
+        <p ng-show="tourAdded">Thank you!</p>
+    </div>
 </body>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular.js" type="text/javascript"></script>
+    <script src="/js/bootstrap.min.js" type="text/javascript"></script>
     <script src="/js/app.js" type="text/javascript"></script>
     <script src="/js/controller.js" type="text/javascript"></script>
     <script src="/js/factory.js" type="text/javascript"></script>

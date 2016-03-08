@@ -25,7 +25,21 @@ apiRouter.get('/', function (req, res){
 apiRouter.get('/insights', function (req, res){
     res.sendFile('insights.html', {root: './public/html'})
 })
+
+apiRouter.post('/tours', function (req, res){
+	res.send({success:'success'})
+})
+
+// \\// LOCALS
+apiRouter.get('/locals', function (req, res){
+    res.sendFile('locals.html', {root: './public/html'})
+})
+
 // \\// PROCESS REGISTRATION DATA
+apiRouter.get('/login', function(req, res){
+	res.sendFile('login.html', {root: './public/html'})
+})
+
 apiRouter.get('/register', function(req, res){
 	res.sendFile('register.html', {root: './public/html'})
 })
@@ -43,9 +57,21 @@ apiRouter.post('/success', passport.authenticate('local-signup', {
 // \\// PROFILE PAGE
 // we will want this protected so you have to be logged in to visit
 // we will use route middleware to verify this (the isLoggedIn function)
-apiRouter.get('/profile', isLoggedIn, function(req, res){
-	res.sendFile('profile.html', {root: './public/html'}),
-	res.send({ user : req.user }) // get the user out of session and pass to template
+
+apiRouter.get('/profile', function(req, res){
+	res.sendFile('profile.html', {root: './public/html'})
+})
+// apiRouter.get('/profile', isLoggedIn, function(req, res){
+// 	res.sendFile('profile.html', {root: './public/html'}),
+// 	res.send({ user : req.user }) // get the user out of session and pass to template
+// })
+
+apiRouter.post('/update', function (req, res){ // ** ADD ISLOGGED IN
+	res.send({success:'success'})
+})
+
+apiRouter.post('/tours', function (req, res){ // ** ADD ISLOGGED IN
+	res.send({success:'success'})
 })
 
 // \\// LOGOUT USER

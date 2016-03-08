@@ -1,14 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="musicSeen">
 <head>
-    <title>Music Seen: Visualize Music with Maps</title>
+    <title>Music Seen: Register Your Account</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/styles.css">
 </head>
-<body>
+<body ng-controller="controllMusicSeen">
+
 	<div class="container">
-		<form action="/success" method="post">
+		<form ng-submit="register()">
 		  <fieldset class="form-group">
 		    <label for="registerUserName">Requested User Name</label>
 		    <input type="text" class="form-control" id="registerUserName" ng-model="registerForm.username">
@@ -25,11 +26,12 @@
 		    <label for="registerArtist">Musical Artist Name</label>
 		    <input type="text" class="form-control" id="registerArtist" ng-model="registerForm.artist">
 		  </fieldset>
-		    <button type="submit" class="btn btn-primary">Submit</button>
+		    <input type="submit" class="btn btn-primary">
 		</form>
 	</div>
 </body>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular.js" type="text/javascript"></script>
+    <script src="/js/bootstrap.min.js" type="text/javascript"></script>
     <script src="/js/app.js" type="text/javascript"></script>
     <script src="/js/controller.js" type="text/javascript"></script>
     <script src="/js/factory.js" type="text/javascript"></script>

@@ -31,7 +31,7 @@ module.exports = function(passport) {
 				if (err)
 					return console.log(done(err))
 				if (user) {
-					return done(null, false) //HOW TO ADAD A REQ.FLASH?
+					return done(null, false) //HOW TO ADD A REQ.FLASH?
 				}
 				else {
 					var newUser 			= new User()
