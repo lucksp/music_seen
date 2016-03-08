@@ -19,26 +19,28 @@ module.exports = function(passport) {
 	//\\ Local Signup
 	passport.use('local-signup', new LocalStrategy({
 		usernameField		: 'username',
-		emailField			: 'email',
 		passwordField		: 'password',
 		passReqToCallback	: true
 	},
 	function(req, username, password, done) {
 		console.log('new LocalStrategy is running')
 		process.nextTick(function(){
-			User.findOne({'local.email' : email}, function(err, user){
+			User.findOne( {'local.username' : username}, function(err, user){
 				console.log('checking DB for matching User')
-				if (err)
-					return console.log(done(err))
-				if (user) {
-					return done(null, false) //HOW TO ADD A REQ.FLASH?
+				if (err) {
+					return done(err)
+					console.log(err)
+				}
+				else if (user) {
+					return done(null, false) //HOW TO ADD A REQ.FLASH MESSAGE?
 				}
 				else {
 					var newUser 			= new User()
 					newUser.local.username 	= username
-					newUser.local.email 	= email
+					newUser.local.email 	= req.body.email
 					newUser.local.password  = newUser.generateHash(password)
-					newUser.local.artist	= artist
+					newUser.local.artist	= req.body.artist
+					newUser.local.profilePic= 'img/default_user.png'
 
 					newUser.save(function(err){
 						console.log('saving newUser')
@@ -50,4 +52,22 @@ module.exports = function(passport) {
 			})
 			})
 	}))	
+
+	// \\ Local Login
+	passport.use('local-login', new LocalStrategy({
+		usernameField		: 'username',
+		passwordField		: 'password',
+		passReqToCallback	: true
+	},
+	function(req, username, password, done){
+		User.findOne({ 'local.username' : username}, function(err, user){
+			if (err)
+				return done(err)
+			if (!user)
+				return done(null, false) //HOW TO ADD A REQ.FLASH MESSAGE?
+			if (!user.validPassword(password))
+				return done(null, false) //HOW TO ADD A REQ.FLASH MESSAGE?
+			return done(null, user)
+		})
+	}))
 }

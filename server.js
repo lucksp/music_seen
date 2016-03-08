@@ -13,10 +13,9 @@ var bodyParser   	= require('body-parser');
 var session      	= require('express-session');
 var configDB 		= require('./config/database.js');
 var apiRoutes 		= require('./app/routes.js');
-var bcry
 
 // configuration ===============================================================
-mongoose.connect('mongodb://localhost/musicseen')
+mongoose.connect(configDB.url)
 // ***** HOW TO DO CHECK ON IF DB CONNECTION THROWS ERR & INSERT console.log()
 
 require('./config/passport')(passport); // pass passport for configuration

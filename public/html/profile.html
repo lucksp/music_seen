@@ -1,19 +1,9 @@
-<!DOCTYPE html>
-<html ng-app="musicSeen">
-<head>
-    <title>Music Seen: Update Your Profile</title>
-    <meta charset="utf-8" />
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="css/styles.css">
-</head>
-<body ng-controller="controllMusicSeen">
-    <div class="container">
         <div class="row col-xs-6">
             <h3>Welcome back, {{user}}</h3>
             <p>You last logged in {{date}}</p>           
         </div>
         <div class="row col-xs-6">
-            INSERT YOUR PROFILE PIC HERE
+            <ng-src={{"user.profilePic"}}>
         </div>
     </div>
     <!-- PROFILE EDITS -->
@@ -65,11 +55,3 @@
         </form>
         <p ng-show="tourAdded">Thank you!</p>
     </div>
-</body>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular.js" type="text/javascript"></script>
-    <script src="/js/bootstrap.min.js" type="text/javascript"></script>
-    <script src="/js/app.js" type="text/javascript"></script>
-    <script src="/js/controller.js" type="text/javascript"></script>
-    <script src="/js/factory.js" type="text/javascript"></script>
-    <script src="/js/controller.js" type="text/javascript" ></script>
-</html>

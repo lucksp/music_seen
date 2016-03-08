@@ -1,1 +1,1 @@
-angular.module('musicSeen',[])
+angular.module('musicSeen',['ngRoute','ngResource'])

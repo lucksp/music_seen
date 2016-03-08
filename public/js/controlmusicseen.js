@@ -1,31 +1,16 @@
 angular.module('musicSeen')
-    .controller('controllMusicSeen',['$scope', '$http', 'insightFactory', function($scope, $http, insightFactory){
+    .controller('controlMusicSeen',['$scope', '$http', function($scope, $http){
 
-// POST NEW REGISTRATION DATA
-$scope.register = function(){
-    $http({
-                method : 'POST',
-                url    : '/success',
-                data   : $scope.registerForm
-            }).then(function(returnData){
-                console.log(returnData)
-                if ( returnData.data.success ) { window.location.href="/profile" }
-            })
-}
-
-
-// POST LOGIN OF EXISTING USER DATA
-$scope.login = function(){
-    $http({
-                method : 'POST',
-                url    : '/profile',
-                data   : $scope.loginForm
-            }).then(function(returnData){
-                console.log(returnData)
-                if ( returnData.data.success ) { window.location.href="/profile" }
-            })
-}
-
+// RECEIVE CONFIRM USER IS LOGGED IN TO ACCESS PROFILE
+$http.get('/profile')
+    .then(function(returnData){
+        if(returnData.data.user){
+            // The user exists!
+        }
+        else {
+            // No user :(
+        }
+    })
 
 // PROFILE UPDATES
 $scope.updateForm = true
