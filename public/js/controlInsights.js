@@ -2,9 +2,8 @@ angular.module('musicSeen')
     .controller('controlInsights',['$scope', '$http', 'factoryInsight', function($scope, $http, factoryInsight){
 
 
-        factoryInsight.get().then(function(responseData){
-            $scope.myGeoJSONPath = responseData.data
-
+        // factoryInsight.get().then(function(responseData){
+        //     $scope.myGeoJSONPath = responseData.data
         //         console.log('Angular got the geoJson file from server', $scope.myGeoJSONPath)
         //         var map = L.map('map').setView([34.74739, -25], 3);
         //         L.geoJson(responseData, {
@@ -26,5 +25,5 @@ angular.module('musicSeen')
         //             clickable: true,
         //             style: defaultStyle
         //         }).addTo(map);
-            })
+        //     })
 }]);

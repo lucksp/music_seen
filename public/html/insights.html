@@ -4,13 +4,10 @@
         <option value="genre">Category</option>
         <option value="topTracks">Top Tracks</option>
     </select>
-    <div id="map"></div>
+    <div class="row col-md-12" id="map"></div>
 </div>
-<div>
-    <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
-        <script src="http://cdn.leafletjs.com/leaflet-0.7.1/leaflet.js"></script>
         <script>
-        var myGeoJSONPath = 'js/countries.geo.json';
+        var myGeoJSONPath = '/api/lib';
         var myCustomStyle = {
             stroke: false,
             fill: true,
@@ -26,5 +23,4 @@
             }).addTo(map);
         })
     </script>
-</div>
 </div>
