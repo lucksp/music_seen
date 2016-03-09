@@ -34,14 +34,14 @@ var countryMatches = function (countryName){
 						
 						if (geoTracks.track[0].name === chartTracks.track[0].name || geoTracks.track[1].name === chartTracks.track[1].name || geoTracks.track[2].name === chartTracks.track[2].name)
 						{
-						matchingCountry[countryName].track1 = geoTracks.track[0].name
-						matchingCountry[countryName].playLink1 = geoTracks.track[0].url
-						matchingCountry[countryName].track2 = geoTracks.track[1].name
-						matchingCountry[countryName].playLink2 = geoTracks.track[1].url
-						matchingCountry[countryName].track3 = geoTracks.track[2].name
-						matchingCountry[countryName].playLink3 = geoTracks.track[2].url
+						country.properties.track1 = geoTracks.track[0].name
+						// matchingCountry[countryName].playLink1 = geoTracks.track[0].url
+						// matchingCountry[countryName].track2 = geoTracks.track[1].name
+						// matchingCountry[countryName].playLink2 = geoTracks.track[1].url
+						// matchingCountry[countryName].track3 = geoTracks.track[2].name
+						// matchingCountry[countryName].playLink3 = geoTracks.track[2].url
 						}
-					// console.log(matchingCountry)
+					console.log(matchingCountry)
 				}
 			})	
 		}

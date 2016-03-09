@@ -18,13 +18,21 @@ angular.module('musicSeen')
             angular.extend($scope, {
                 geojson: {
                     data: data,
-                    style: {
+                    style: function(feature){
+                      console.log('testing features', feature)
+                      var myStyles = {
                         fillColor: '#5a5a5a',
                         weight: 1,
                         opacity: 1,
                         color: 'white',
                         // dashArray: '3',
                         fillOpacity: 0.7
+                      }
+
+                      if (feature.properties.track1){
+                        myStyles.fillColor = "green"
+                      }
+                      return myStyles
                     }
                 }
             });
@@ -32,6 +40,7 @@ angular.module('musicSeen')
 
 
     $scope.updateGeojson = function() {
+      
         $scope.geojson.style.fillColor = 'red'
                         
                     // $scope.geojson.data = {
