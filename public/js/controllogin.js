@@ -5,11 +5,11 @@ angular.module('musicSeen')
 $scope.login = function(){
     $http({
                 method : 'POST',
-                url    : '/profile',
+                url    : '/login',
                 data   : $scope.loginForm
             }).then(function(returnData){
                 console.log(returnData)
-                if ( returnData.data.success ) { window.location.href="/profile" }
+                if ( returnData.data.success ) { window.location.href="#/profile" }
             })
 }
 

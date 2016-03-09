@@ -8,31 +8,52 @@ var lfm 			= new LastfmAPI({
 						'api_key' : apiKey,
 					});
 
-	var countryData = function (name){
-		lfm.geo.getTopTracks({
-			  country: name,
-			  limit: 5
-			}, function (err, tracks) {
-			if (err) {
-			    return 'OMG!', err, name;
-			}
-			  // console.log(name, tracks.track);
-			})
-	}
-	for(var i = 0; i < country.features.length; i++){
-		var name = country.features[i].properties.name
-		countryData(name)
+var matchingCountry = {}
+
+// console.log(matchingCountry.countryName)
+var countryMatches = function (countryName){
+		matchingCountry[countryName] = {}
+	lfm.geo.getTopTracks({
+		  country: countryName,
+		  limit: 3
+		}, function (err, geoTracks) {
+		if (err) {
+			// console.log(err, name)
+		    return 'OMG!', err, countryName;
+		}
+		else {
+			lfm.chart.getTopTracks({
+				limit: 3
+			},function(err, chartTracks){
+				if(err){
+					// console.log(err)
+					return 'chartTopTracks did not run', err
+				}
+				else {
+						// console.log('geoTracks', geoTracks.track[0].name, 'chartTracks', chartTracks.track[0].name)
+						
+						if (geoTracks.track[0].name === chartTracks.track[0].name || geoTracks.track[1].name === chartTracks.track[1].name || geoTracks.track[2].name === chartTracks.track[2].name)
+						{
+						matchingCountry[countryName].track1 = geoTracks.track[0].name
+						matchingCountry[countryName].playLink1 = geoTracks.track[0].url
+						matchingCountry[countryName].track2 = geoTracks.track[1].name
+						matchingCountry[countryName].playLink2 = geoTracks.track[1].url
+						matchingCountry[countryName].track3 = geoTracks.track[2].name
+						matchingCountry[countryName].playLink3 = geoTracks.track[2].url
+						}
+					// console.log(matchingCountry)
+				}
+			})	
+		}
+	})
+}
+
+
+for(var i = 0; i < country.features.length; i++){
+		var countryName = country.features[i].properties.name
+		countryMatches(countryName)
 	}
 
 module.exports = {
-	countryTopTracks : countryData
+	countryTopTracks : countryMatches
 }
-
-// lfm.geo.getMetros({ 
-// 	country: 'Canada'
-// 	}, function(err, metros){
-// 	if(err) {
-// 		console.log('the error message is:', err)
-// 	}
-// 	console.log(metros)
-// })

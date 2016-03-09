@@ -10,7 +10,12 @@ var userSchema 	= mongoose.Schema({
 			email		: {type: String, required: true},
 			password	: {type: String, required: true},	
 			artist		: {type: String, required: true},
-			profilePic	: String
+			profilePic	: {type : mongoose.Schema.ObjectId, ref : "Profile"},
+			tourName	: {type : mongoose.Schema.ObjectId, ref : "Tour"},
+			tourLogo	: {type : mongoose.Schema.ObjectId, ref : "Tour"},
+			tourDate	: {type : mongoose.Schema.ObjectId, ref : "Tour"},
+			venueName	: {type : mongoose.Schema.ObjectId, ref : "Tour"},
+			venueAddy	: {type : mongoose.Schema.ObjectId, ref : "Tour"},
 		}
 	})
 

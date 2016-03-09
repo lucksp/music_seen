@@ -1,8 +1,7 @@
 // HTTP ROUTING
 
 var countryData 		= require('./models/countries.geo.json')
-var ctrlCountryData		= require('../controllers/ctrl.lastFM.countryData.js')
-// var ctrlD3Geo			= require('../controllers/ctrl.d3.js')
+var countryTopTracks	= require('../controllers/ctrl.lastFM.countryData.js')
 var apiRouter 			= require('express').Router()
 var db 					= require('./models/userModel.js')
 var mongoose 			= require('mongoose')
@@ -11,15 +10,15 @@ var bcrypt 				= require('bcrypt-nodejs')
 
 //||\\ API routes
 
-// JSON Sends
+// Data Sends
 apiRouter.get('/api/lib', function(req, res){
 	res.json(countryData)
 	console.log('sending geoJSON from server')
 })
 
-apiRouter.get('/api/d3', function(req, res){
-	res.json(countryData)
-	console.log('sending geoJSON from server')
+apiRouter.get('/api/lastFM', function(req, res){
+	res.send(countryTopTracks)
+	console.log('sending lastFM API countryTopTracks')
 })
 
 // Page Routes
@@ -37,7 +36,7 @@ apiRouter.post('/tours', function (req, res){
 apiRouter.post('/register', function(req, res, next){
 	var signMeIn = passport.authenticate('local-signup', function(err, user){
 		if (err){
-			res.send(err)
+			res.send({ error: err})
 			console.log(err)
 		}
 		else {
@@ -64,6 +63,7 @@ apiRouter.post('/login', function(req, res, next){
 			})
 		}
 	})
+	logMeIn(req, res, next)
 })
 
 // \\// PROFILE PAGE

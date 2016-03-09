@@ -9,11 +9,11 @@ angular.module('musicSeen')
 	                data   : $scope.registerForm
 	            }).then(function(returnData){
 	                console.log(returnData.data)
-	                if ( err ){
+	                if ( returnData.data.error ){
 	                	window.location.href="#/register"
 	                }
 	                if ( returnData.data.success ) {
-	                	 { window.location.href="#/profile" }	
+	                	 { window.location.href="#/profile" }
 	                } 
 	            })
 	}

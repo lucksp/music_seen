@@ -5,7 +5,8 @@
         <option value="topTracks">Top Tracks</option>
     </select>
     <div>
-        <leaflet geojson="geojson" width="100%" height="480px"></leaflet>
+    	<button ng-click="updateGeojson()">update GeoJSON</button>
+        <leaflet geojson="geojson" lf-center="center" legend="legend" width="100%" height="800px"></leaflet>
     </div>
 </div>
 </div>
