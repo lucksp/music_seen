@@ -4,23 +4,8 @@
         <option value="genre">Category</option>
         <option value="topTracks">Top Tracks</option>
     </select>
-    <div class="row col-md-12" id="map"></div>
+    <div>
+        <leaflet geojson="geojson" width="100%" height="480px"></leaflet>
+    </div>
 </div>
-        <script>
-        var myGeoJSONPath = '/api/lib';
-        var myCustomStyle = {
-            stroke: false,
-            fill: true,
-            fillColor: '#000',
-            fillOpacity: 1
-        }
-        $.getJSON(myGeoJSONPath,function(data){
-            var map = L.map('map').setView([39.74739, -105], 4);
-
-            L.geoJson(data, {
-                clickable: false,
-                style: myCustomStyle
-            }).addTo(map);
-        })
-    </script>
 </div>

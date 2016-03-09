@@ -1,7 +1,8 @@
 // HTTP ROUTING
 
 var countryData 		= require('./models/countries.geo.json')
-var ctrls 				= require('../controllers/Ctrl.lastFM.js')
+var ctrlCountryData		= require('../controllers/ctrl.lastFM.countryData.js')
+// var ctrlD3Geo			= require('../controllers/ctrl.d3.js')
 var apiRouter 			= require('express').Router()
 var db 					= require('./models/userModel.js')
 var mongoose 			= require('mongoose')
@@ -12,6 +13,11 @@ var bcrypt 				= require('bcrypt-nodejs')
 
 // JSON Sends
 apiRouter.get('/api/lib', function(req, res){
+	res.json(countryData)
+	console.log('sending geoJSON from server')
+})
+
+apiRouter.get('/api/d3', function(req, res){
 	res.json(countryData)
 	console.log('sending geoJSON from server')
 })

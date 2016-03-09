@@ -1,29 +1,35 @@
 angular.module('musicSeen')
-    .controller('controlInsights',['$scope', '$http', 'factoryInsight', function($scope, $http, factoryInsight){
+    .controller('controlInsights',['$scope', '$http', 'factoryInsight', 'leafletData', function($scope, $http, factoryInsight, leafletData){
 
+        $scope.centerJSON = function() {
+            leafletData.getMap().then(function(map) {
+                var latlngs = [];
+                for (var i in $scope.geojson.data.features[0].geometry.coordinates) {
+                    var coord = $scope.geojson.data.features[0].geometry.coordinates[i];
+                    for (var j in coord) {
+                        var points = coord[j];
+                        for (var k in points) {
+                            latlngs.push(L.GeoJSON.coordsToLatLng(points[k]));
+                        }
+                    }
+                }
+                map.fitBounds(latlngs);
+            });
+        };
 
-        // factoryInsight.get().then(function(responseData){
-        //     $scope.myGeoJSONPath = responseData.data
-        //         console.log('Angular got the geoJson file from server', $scope.myGeoJSONPath)
-        //         var map = L.map('map').setView([34.74739, -25], 3);
-        //         L.geoJson(responseData, {
-        //             clickable: true,
-        //             style: defaultStyle
-        //         }).addTo(map);
-        //     })
-
-        //     var defaultStyle = {
-        //         stroke: false,
-        //         fill: true,
-        //         fillColor: '#5a5a5a',
-        //         fillOpacity: 1
-        //     }
-        //     $.getJSON($scope.myGeoJSONPath,function(data){
-        //         console.log('if I see this, $scope.geoJson is running outide GET/THEN')
-        //         var map = L.map('map').setView([34.74739, -25], 3);
-        //         L.geoJson(data, {
-        //             clickable: true,
-        //             style: defaultStyle
-        //         }).addTo(map);
-        //     })
+        $http.get("api/lib").success(function(data, status) {
+            angular.extend($scope, {
+                geojson: {
+                    data: data,
+                    style: {
+                        fillColor: '#5a5a5a',
+                        weight: 1,
+                        opacity: 1,
+                        color: 'white',
+                        // dashArray: '3',
+                        fillOpacity: 0.7
+                    }
+                }
+            });
+        });
 }]);

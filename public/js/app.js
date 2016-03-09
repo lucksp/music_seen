@@ -1,1 +1,5 @@
-angular.module('musicSeen',['ngRoute','ngResource'])
+angular.module('musicSeen',[
+	'ngRoute',
+	'ngResource', 
+	'leaflet-directive'
+	])
