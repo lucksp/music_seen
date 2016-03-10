@@ -8,7 +8,7 @@ var db 					= require('./models/userModel.js')
 var mongoose 			= require('mongoose')
 var passport			= require('passport')
 var bcrypt 				= require('bcrypt-nodejs')
-
+var ctrlTours			= require('../controllers/ctrl.Tours.js')
 //||\\ API routes
 
 // Data Sends
@@ -29,12 +29,7 @@ apiRouter.get('/', function (req, res){
     res.sendFile('shell.html', {root: './public/html'})
 })
 
-apiRouter.post('/tours', function (req, res){
-	res.send({success:'success'})
-})
-
 // \\// PROCESS REGISTRATION DATA
-
 apiRouter.post('/register', function(req, res, next){
 	var signMeIn = passport.authenticate('local-signup', function(err, user){
 		if (err){
@@ -51,26 +46,53 @@ apiRouter.post('/register', function(req, res, next){
 	signMeIn(req, res, next)
 })
 
+apiRouter.isAuthenticated = function(req, res, next){
+    if(req.isAuthenticated()){
+        return next();
+    }
+    res.send({error:'not logged in'});
+}
 
 // \\// PROCESS LOGIN DATA
 apiRouter.post('/login', function(req, res, next){
 	var logMeIn = passport.authenticate('local-login', function(err, user){
-		if(err){
-			res.send('could not log in', err)
+		if (err){
 			console.log(err)
+			res.send({ error: err})
 		}
-		else {
-			req.login(user, function(){
-				res.send({success:'success'})
-			})
+		else{
+			res.send({ success:'success' })
 		}
 	})
 	logMeIn(req, res, next)
 })
+// apiRouter.post('/login', function(req, res, next){
+// 	console.log('Login function received on Server Router')
+// 	passport.authenticate('local-login', function(err, user, info){
+// 		if(err){
+// 			return next(err)
+// 			console.log(err)
+// 		}
+// 		if(!user){
+// 			return res.send({error : 'Invalid Username or Password'})
+// 		}
+// 		else {
+// 			req.login(user, function(err){
+// 				if (err){
+// 					return next(err)
+// 				}
+// 				return res.send({success:'success'})
+// 			})
+// 		}
+// 	})
+// })
 
 // \\// PROFILE PAGE
-
 apiRouter.get('/profile', isLoggedIn, function(req, res){
+	res.send({user:req.user})
+})
+
+apiRouter.get('/profile/:username', isLoggedIn, function(req, res){
 	res.send({user:req.user})
 })
 
@@ -78,9 +100,7 @@ apiRouter.post('/update', function (req, res){ // ** ADD ISLOGGED IN
 	res.send({success:'success'})
 })
 
-apiRouter.post('/tours', function (req, res){ // ** ADD ISLOGGED IN
-	res.send({success:'success'})
-})
+apiRouter.post('/tours', ctrlTours.createTour)
 
 // \\// LOGOUT USER
 apiRouter.get('/logout', function(req, res){

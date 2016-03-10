@@ -1,19 +1,32 @@
 angular.module('musicSeen')
-    .controller('controlProfile',['$scope', '$http', function($scope, $http){
+    .controller('controlProfile',['$scope', '$http', 'factoryProfile', function($scope, $http, factoryProfile){
 
-    // var logout = function(){
-    // 	$http({
-	   //              method : 'POST',
-	   //              url    : '/logout',
-	   //          }).then(function(returnData){
-	   //          	if ( returnData.data.success ) {
-	   //              	 { window.location.href="/" }
-	   //              }
-	   //          })
-    // }
+$scope.user = factoryProfile.User
 
-	var Hero = $resource('/api/heroes/:id', {id : '@_id'})
 
-    	$scope.user = 
+    $scope.tourForm = true
+    $scope.addTour = function(){
+    	$scope.tourForm = !$scope.tourForm
+    }
+
+    $scope.createTour = function(){
+    	$http({
+	                method : 'POST',
+	                url    : '/tours',
+	                data   : $scope.tour
+	            }).then(function(returnData){
+	                console.log(returnData.data)
+	                if ( returnData.data.error ){
+	                	$scope.error = 'The tour did not submit'
+	                	console.log($scope.error)
+	                }
+	                if ( returnData.data.success ) {
+	                	 { window.location.href="#/profile" }
+	                } 
+	            })
+    }
+
+
+    	$scope.user = factoryProfile.User
 
 }]);

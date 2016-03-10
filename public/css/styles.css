@@ -86,9 +86,9 @@ nav .ul {
 
 /* PROFILE PAGE */
 
-.profilePic {
+.profile {
     position: absolute;
-    right: 10em;
+    top: 0;
 }
 
 .profilePic img {

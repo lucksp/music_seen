@@ -1,10 +1,10 @@
 angular.module('musicSeen')
-	.factory('factoryInsight', ['$http', function($http){
+	.factory('factoryProfile', ['$resource', function($resource){
+
+	var User = $resource('/profile/:username', {username : 'username'})
 
 		return {
-				get 	: function(){
-					return $http.get('/api/lib')
+				User 	:  User
 			}
-		}
-
+		
 }]);

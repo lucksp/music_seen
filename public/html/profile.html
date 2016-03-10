@@ -1,22 +1,22 @@
 
-<div class="row col-xs-12">
-  <div>
-    <h3>Welcome back, {{user.name}}</h3>
+<div class="container">
+  <div class="row col-xs-12 profile">
+    <h3>Welcome back, {{user.username}}</h3>
+      <div class="profilePic">
+        <img src="img/default_user.png">
+      </div>
   </div>
             <!-- <p>You last logged in {{date}}</p> -->
   <div>
         <a href="/logout"><button>Log Out</button></a>
   </div>
-        <div class="row profilePic">
-            <img src="img/default_user.png">
-        </div>
     </div>
     <!-- PROFILE EDITS -->
     <div class="container">
-      <div class="row col-xs-6"
+      <!-- <div class="row col-xs-6"
         <h5 ng-click="profileUpdate">Update Your Profile:</h5>
       </div>
-        <!-- <form ng-submit="tourData" ng-hide="updateForm">
+        <form ng-submit="tourData" ng-hide="updateForm">
             <fieldset class="form-group">
             <label for="updateEmail">Email</label>
             <input type="text" class="form-control" id="updateEmail" ng-model="update.email">
@@ -27,20 +27,20 @@
           </fieldset>
           <input type="submit" class="btn btn-primary">
         </form>
-        <p ng-show="">Thank you!</p> -->
-    </div>
+        <p ng-show="">Thank you!</p>
+    </div> -->
     <!-- TOUR DATES -->
     <div class="container">
-        <h5 ng-click="tours">Add a new Tour:</h5>
-        <form ng-submit="tourData()" ng-hide="tourForm">
+        <h5 ng-click="addTour()">Add a new Tour:</h5>
+        <form ng-submit="createTour()" ng-hide="tourForm">
             <fieldset class="form-group">
             <label for="tourName">Tour Name</label>
             <input type="text" class="form-control" id="tourName" placeholder="Name of Tour" ng-model="tour.name">
           </fieldset>
-            <fieldset class="form-group">
+            <!-- <fieldset class="form-group">
             <label for="tourLogo">Tour Logo</label>
             <input type="upload" class="form-control" id="tourLogo" ng-model="tour.logo">
-          </fieldset> 
+          </fieldset>  -->
           <fieldset class="form-group">
             <label for="tourDates">Tour Dates</label>
             <input type="date" class="form-control" id="tourDates" ng-model="tour.date">
