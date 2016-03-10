@@ -29,7 +29,7 @@ angular.module('musicSeen')
                         fillOpacity: 0.7
                       }
 
-                      if (feature.properties.track1){
+                      if (feature.properties.genre == 'rock'){
                         myStyles.fillColor = "green"
                       }
                       return myStyles

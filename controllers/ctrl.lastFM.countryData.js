@@ -8,11 +8,8 @@ var lfm 			= new LastfmAPI({
 						'api_key' : apiKey,
 					});
 
-var matchingCountry = {}
-
 // console.log(matchingCountry.countryName)
 var countryMatches = function (countryName){
-		matchingCountry[countryName] = {}
 	lfm.geo.getTopTracks({
 		  country: countryName,
 		  limit: 3
@@ -30,19 +27,26 @@ var countryMatches = function (countryName){
 					return 'chartTopTracks did not run', err
 				}
 				else {
+
+					console.log(countryName, 'top Tracks ===', chartTracks.track[0].name, 'has playcount ===', chartTracks.track[0].playcount)
+					// console.log(countryName, 'top Tracks ===', geoTracks.track)
+
 						// console.log('geoTracks', geoTracks.track[0].name, 'chartTracks', chartTracks.track[0].name)
 						
 						if (geoTracks.track[0].name === chartTracks.track[0].name || geoTracks.track[1].name === chartTracks.track[1].name || geoTracks.track[2].name === chartTracks.track[2].name)
 						{
-						return country.properties.track1 = geoTracks.track[0].name
-						// matchingCountry[countryName].playLink1 = geoTracks.track[0].url
-						// matchingCountry[countryName].track2 = geoTracks.track[1].name
-						// matchingCountry[countryName].playLink2 = geoTracks.track[1].url
-						// matchingCountry[countryName].track3 = geoTracks.track[2].name
-						// matchingCountry[countryName].playLink3 = geoTracks.track[2].url
-						 
+							return
+								country.features.properties.track1 		= geoTracks.track[0].name,
+								country.features.properties.playcount1 	= chartTracks.track[0].playcount,
+								country.features.properties.playLink1 	= geoTracks.track[0].url,
+								country.features.properties.track2 		= geoTracks.track[1].name,
+								country.features.properties.playcount2 	= chartTracks.track[1].playcount,
+								country.features.properties.playLink2 	= geoTracks.track[1].url,
+								country.features.properties.track3 		= geoTracks.track[2].name,
+								country.features.properties.playcount3 	= chartTracks.track[2].playcount,
+								country.features.properties.playLink3 	= geoTracks.track[2].url
 						}
-					console.log(matchingCountry)
+												// console.log(country.features.properties)
 				}
 			})	
 		}
