@@ -1,87 +1,90 @@
 angular.module('musicSeen')
     .controller('controlInsights',['$scope', '$http', 'factoryInsight', 'leafletData', function($scope, $http, factoryInsight, leafletData){
         
-        angular.extend($scope, {
-            center: {
-                    lat: 27.4086665,
-                    lng: 1.7576433,
-                    zoom: 3
+    angular.extend($scope, {
+        center: {
+                lat: 27.4086665,
+                lng: 1.7576433,
+                zoom: 2
+            },
+        legend: {
+                position: 'bottomleft',
+                colors: [ '#1F3A93',  '#81CFE0',  '#BF55EC',               '#F2784B', '#D91E18',  '#87D37C',  '#2C3E50'],
+                labels: [ 'Rock',     'Indie',    'Love at First Listen',  'World', 'BritPop',  'AltRock',    'Metal']
                 },
-            legend: {
-                    position: 'bottomleft',
-                    colors: [ '#ff0000', '#28c9ff', '#0000ff'],
-                    labels: [ 'Track 1', 'Track 2', 'Track 3']
+        defaults: {
+                scrollWheelZoom: false
+        }
+    });
+
+$scope.updateGeojson = function() {
+    $http.get('api/getTags').success(function(data, status) {
+        angular.extend($scope, {
+            geojson: {
+                data: data,
+                style: function(feature){
+                  var myStyles = {
+                    fillColor: '#5e5e5e',
+                    weight: 1,
+                    opacity: 1,
+                    color: 'white',
+                    fillOpacity: 0.7
+                  }
+                  if (feature.properties.genre === 'love at first listen'){  
+                    myStyles.fillColor = '#BF55EC'
+                  }
+                  else if (feature.properties.genre === 'rock') {
+                    myStyles.fillColor = "#1F3A93"
+                  }
+                  else if (feature.properties.genre === 'indie') {
+                    myStyles.fillColor = "#81CFE0"
+                  }
+                  else if (feature.properties.genre === 'indie rock') {
+                    myStyles.fillColor = "#81CFE0"
+                  }
+                  else if (feature.properties.genre === 'Hip-Hop') {
+                    myStyles.fillColor = "#F2784B"
+                  }
+                  else if (feature.properties.genre === 'rap') {
+                    myStyles.fillColor = "#F2784B"
+                  }
+                  else if (feature.properties.genre === 'r&b') {
+                    myStyles.fillColor = "#F2784B"
+                  }
+                  else if (feature.properties.genre === 'soul') {
+                    myStyles.fillColor = "#F2784B"
+                  }
+                  else if (feature.properties.genre === 'femail vocalists') {
+                    myStyles.fillColor = "#F2784B"
+                  }
+                  else if (feature.properties.genre === 'dubstep') {
+                    myStyles.fillColor = "#F2784B"
+                  }
+                  else if (feature.properties.genre === 'britpop') {
+                    myStyles.fillColor = "#D91E18"
+                  }
+                  else if (feature.properties.genre === 'alternative') {
+                    myStyles.fillColor = "#87D37C"
+                  }
+                  else if (feature.properties.genre === 'metal') {
+                    myStyles.fillColor = "#87D37C"
+                  }
+                  return myStyles
                 }
-        });
-
-        $http.get("api/lib").success(function(data, status) {
-            angular.extend($scope, {
-                geojson: {
-                    data: data,
-                    style: function(feature){
-                      console.log('testing features', feature)
-                      var myStyles = {
-                        fillColor: '#5a5a5a',
-                        weight: 1,
-                        opacity: 1,
-                        color: 'white',
-                        // dashArray: '3',
-                        fillOpacity: 0.7
-                      }
-
-                      if (feature.properties.genre == 'rock'){
-                        myStyles.fillColor = "green"
-                      }
-                      return myStyles
-                    }
-                }
-            });
-        });
+              }
+          });
+      })
+  }
+          // $scope.updateGeojson = function() {
+          //   $scope.geojson.data = $http.get('api/getTags').success(function(data, status) {
+          //     if (feature.properties.genre === 'rock'){  
+          //       myStyles.fillColor = "green"
+          //     }
+          //     return myStyles
+          //   }
+          // )};
 
 
-    $scope.updateGeojson = function() {
-      
-        $scope.geojson.style.fillColor = 'red'
-                        
-                    // $scope.geojson.data = {
-                    //     style: {
-                    //         fillColor: 'red'
-                    //     }
-                                  //     "type": "FeatureCollection",
-                                  //     "features": [
-                                  //       {
-                                  //         "type": "Feature",
-                                  //         "properties": {},
-                                  //         "geometry": {
-                                  //           "type": "Polygon",
-                                  //           "coordinates": [
-                                  //             [
-                                  //               [
-                                  //                 -41.8359375,
-                                  //                 28.92163128242129
-                                  //               ],
-                                  //               [
-                                  //                 -41.8359375,
-                                  //                 38.272688535980976
-                                  //               ],
-                                  //               [
-                                  //                 -26.015625,
-                                  //                 38.272688535980976
-                                  //               ],
-                                  //               [
-                                  //                 -26.015625,
-                                  //                 28.92163128242129
-                                  //               ],
-                                  //               [
-                                  //                 -41.8359375,
-                                  //                 28.92163128242129
-                                  //               ]
-                                  //             ]
-                                  //           ]
-                                  //         }
-                                  //       }
-                                  //     ]
-                                  // };
-                            }
+  
 
 }]);

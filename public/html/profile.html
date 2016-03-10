@@ -1,16 +1,22 @@
-                    <button>Log Out</button>        
-<div class="row col-xs-6">
-            <h3>Welcome back, {{user}}</h3>
-            <p>You last logged in {{date}}</p>
-        </div>
-        <div class="row col-xs-6">
-            <ng-src={{"user.profilePic"}}>
+
+<div class="row col-xs-12">
+  <div>
+    <h3>Welcome back, {{user.name}}</h3>
+  </div>
+            <!-- <p>You last logged in {{date}}</p> -->
+  <div>
+        <a href="/logout"><button>Log Out</button></a>
+  </div>
+        <div class="row profilePic">
+            <img src="img/default_user.png">
         </div>
     </div>
     <!-- PROFILE EDITS -->
     <div class="container">
+      <div class="row col-xs-6"
         <h5 ng-click="profileUpdate">Update Your Profile:</h5>
-        <form ng-submit="tourData" ng-hide="updateForm">
+      </div>
+        <!-- <form ng-submit="tourData" ng-hide="updateForm">
             <fieldset class="form-group">
             <label for="updateEmail">Email</label>
             <input type="text" class="form-control" id="updateEmail" ng-model="update.email">
@@ -21,7 +27,7 @@
           </fieldset>
           <input type="submit" class="btn btn-primary">
         </form>
-        <p ng-show="tourAdded">Thank you!</p>
+        <p ng-show="">Thank you!</p> -->
     </div>
     <!-- TOUR DATES -->
     <div class="container">

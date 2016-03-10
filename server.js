@@ -7,7 +7,7 @@ var port     		= process.env.PORT || 3000;
 var mongoose 		= require('mongoose');
 var passport 		= require('passport');
 var passportlocal 	= require('passport-local')
-var morgan       	= require('morgan');
+// var morgan       	= require('morgan');
 var cookieParser 	= require('cookie-parser');
 var bodyParser   	= require('body-parser');
 var session      	= require('express-session');
@@ -44,7 +44,6 @@ app.use('/api/lib', apiRoutes) // Initialize routes to use
 // app.get('/', function (req, res) {
 //   res.sendFile('index.html', {root: './public/html'})
 // })
-
 
 // launch ======================================================================
 app.listen(port);

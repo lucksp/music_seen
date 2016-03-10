@@ -1,7 +1,8 @@
 // HTTP ROUTING
-
+var fs					= require('fs')
 var countryData 		= require('./models/countries.geo.json')
-var countryTopTracks	= require('../controllers/ctrl.lastFM.countryData.js')
+// var tagJson				= require('./models/tagjson.geo.json')
+var countryTopTags		= require('../controllers/ctrl.lastFM.countryData.js')
 var apiRouter 			= require('express').Router()
 var db 					= require('./models/userModel.js')
 var mongoose 			= require('mongoose')
@@ -13,13 +14,14 @@ var bcrypt 				= require('bcrypt-nodejs')
 // Data Sends
 apiRouter.get('/api/lib', function(req, res){
 	res.json(countryData)
-	console.log('sending geoJSON from server')
+	// console.log('sending geoJSON from server')
 })
 
-apiRouter.get('/api/lastFM', function(req, res){
-	res.send(countryTopTracks)
-	console.log('sending lastFM API countryTopTracks')
-})
+apiRouter.get('/api/getTags', function(req, res){
+	var tagJson = fs.readFileSync('./app/models/tagjson.geo.json', 'utf-8')
+	console.log('sending TAGjson from server')
+	res.json(JSON.parse(tagJson))
+});
 
 // Page Routes
 // \\// SHELL
