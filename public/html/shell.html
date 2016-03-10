@@ -5,31 +5,27 @@
     <meta charset="utf-8" />
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.1/leaflet.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="css/styles.css">
 </head>
 <body>
-<a href="#/"><img src="img/music_seen_logo@0.5x.png"></a>
-<nav class="navbar">
+<a href="#/"><img class="logo" src="img/music_seen_logo@0.5x.png"></a>
 	<div class="container-fluid">
-		<div class="navbar-header">
-		  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
-		    <span class="sr-only">Toggle navigation</span>
-		    <span class="icon-bar"></span>
-		    <span class="icon-bar"></span>
-		    <span class="icon-bar"></span>
-		  </button>
-		</div>
-		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-		  <ul class="nav navbar-nav">
-		    <li><a href="#/insights">Insights</a></li>
-		    <li><a href="#/locals">Local</a></li>
-		    <li><a href="#/login">Log In</a></li>
-		    <li><a href="#/register">Register</a></li>
-		  </ul>
+		<div class="nav-wrapper">
+			<div class="menu">
+				<i class="fa fa-bars"></i>
+			</div>
+			<nav>
+				<ul>
+				    <li><a href="#/insights">Insights</a></li>
+				    <li><a href="#/locals">Local</a></li>
+				    <li><a href="#/login">Log In</a></li>
+				    <li><a href="#/register">Register</a></li>
+				</ul>
+			</nav>
 		</div>
 	</div>
-</nav>
-<div ng-view>	
+<div class="container-fluid" ng-view>	
 </div>
 
 	<!-- 3rd Pary Scripts -->
