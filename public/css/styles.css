@@ -1,3 +1,34 @@
+.font-thin {
+    font-family: "Titillium Web", sans-serif;
+    font-weight: 200;
+}
+
+.font-semibold {
+    font-family: "Titillium Web", sans-serif;
+    font-weight: 600;
+}
+
+.font-light {
+    font-family: "Titillium Web", sans-serif;
+    font-weight: 300;
+}
+
+/** {
+    position: relative;
+}*/
+
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    background-color: #2f2f2f;
+    font-family: "Titillium Web", sans-serif;
+    font-weight: normal;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased !important;
+}
 
 .container-fluid {
     margin: 0;
@@ -9,6 +40,8 @@
 
 .logo {
     position: relative;
+    z-index: 100;
+    padding: 2rem;
 }
 
 .fullscreen-bg {
@@ -34,36 +67,19 @@
 }
 
 /*NAVBAR */
-.nav-wrapper {
+.navbar {
     position: absolute;
     top: 0;
+    width: 100%;
+    margin: 0;
+    opacity: 0.7;
+    padding-left: 115px;
 }
 
-.menu {
-    /*background-color: #fff;*/
-    height: 39px;
-    width: 39px;
-    z-index: 100;
-    position: fixed;
-    right: 3em;
-    top: 3em;
-    overflow: hidden;
-}
-
-.fa-bars {
+/*INDEX*/
+.indexText h2 {
     color: #fff;
-    z-index: 100;
-    font-size: 4rem;
 }
-
-.nav {
-    position: absolute;
-}
-
-nav .ul {
-    background-color: #373737;
-}
-
 
  /*INSIGHT MAP */
 .legend {
