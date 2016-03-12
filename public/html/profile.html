@@ -41,20 +41,23 @@
             <label for="tourLogo">Tour Logo</label>
             <input type="upload" class="form-control" id="tourLogo" ng-model="tour.logo">
           </fieldset>  -->
-          <fieldset class="form-group">
-            <label for="tourDates">Tour Dates</label>
-            <input type="date" class="form-control" id="tourDates" ng-model="tour.date">
-          </fieldset>
-          <fieldset class="form-group">
-            <label for="tourVenue">Venue Name</label>
-            <input type="text" class="form-control" id="tourVenue" placeholder="Venue" ng-model="tour.venue">
-          </fieldset>
-          <fieldset class="form-group">
-            <label for="tourAddress">Address</label>
-            <input type="text" class="form-control" id="tourAdress" placeholder="Address" ng-model="tour.address">
-          </fieldset>
-          <button type="button" class="btn btn-primary">+</button><span>Add More Dates</span><br>
-          <input type="submit" class="btn btn-primary">
+          <div class="tourDates" ng-repeat="date in tour.tourDates">
+            <fieldset class="form-group">
+              <label for="tourDates">Tour Dates</label>
+              <input type="date" class="form-control" id="tourDates" ng-model="date.date">
+            </fieldset>
+            <fieldset class="form-group">
+              <label for="tourVenue">Venue Name</label>
+              <input type="text" class="form-control" id="tourVenue" placeholder="Venue" ng-model="date.venue">
+            </fieldset>
+            <fieldset class="form-group">
+              <label for="tourAddress">Address</label>
+              <input type="text" class="form-control" id="tourAdress" placeholder="Address" ng-model="date.addy">
+            </fieldset>
+          </div>
+          <hr>
+          <button type="button" class="btn btn-primary" ng-click="addMoreDates()">Add More Dates</button><br>
+          <input type="submit" class="btn btn-primary"><span class="errorMessage">{{error}}</span>
         </form>
-        <p ng-show="tourAdded">Thank you!</p>
+        <p ng-hide="tourAdded">Thank you!</p>
     </div>

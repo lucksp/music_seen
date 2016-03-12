@@ -8,7 +8,7 @@ angular.module('musicSeen')
 	                url    : '/register',
 	                data   : $scope.registerForm
 	            }).then(function(returnData){
-	                console.log(returnData.data)
+	                console.log(returnData)
 	                if ( returnData.data.error ){
 	                	window.location.href="#/register"
 	                }

@@ -1,8 +1,9 @@
 // HTTP ROUTING
 var fs					= require('fs')
 var countryData 		= require('./models/countries.geo.json')
-// var tagJson				= require('./models/tagjson.geo.json')
+var playsJson			= require('./models/playsjson.geo.json')
 var countryTopTags		= require('../controllers/ctrl.lastFM.countryData.js')
+var playsPerCountry	 	= require('../controllers/ctrl.lastFM.playsPer.js')
 var apiRouter 			= require('express').Router()
 var db 					= require('./models/userModel.js')
 var mongoose 			= require('mongoose')
@@ -21,6 +22,12 @@ apiRouter.get('/api/getTags', function(req, res){
 	var tagJson = fs.readFileSync('./app/models/tagjson.geo.json', 'utf-8')
 	console.log('sending TAGjson from server')
 	res.json(JSON.parse(tagJson))
+});
+
+apiRouter.get('/api/getPlays', function(req, res){
+	var playsJson = fs.readFileSync('./app/models/playsjson.geo.json', 'utf-8')
+	console.log('sending PLAYSjson from server')
+	res.json(JSON.parse(playsJson))
 });
 
 // Page Routes
@@ -55,37 +62,24 @@ apiRouter.isAuthenticated = function(req, res, next){
 
 // \\// PROCESS LOGIN DATA
 apiRouter.post('/login', function(req, res, next){
+	console.log(req.body)
 	var logMeIn = passport.authenticate('local-login', function(err, user){
 		if (err){
 			console.log(err)
 			res.send({ error: err})
 		}
+		else if(!user){
+			return res.send({error : 'Invalid Username'})
+		}
 		else{
-			res.send({ success:'success' })
+				req.login(user, function(){
+				console.log('successful POST register')
+				res.send({ success:'success' })	
+			})		
 		}
 	})
 	logMeIn(req, res, next)
 })
-// apiRouter.post('/login', function(req, res, next){
-// 	console.log('Login function received on Server Router')
-// 	passport.authenticate('local-login', function(err, user, info){
-// 		if(err){
-// 			return next(err)
-// 			console.log(err)
-// 		}
-// 		if(!user){
-// 			return res.send({error : 'Invalid Username or Password'})
-// 		}
-// 		else {
-// 			req.login(user, function(err){
-// 				if (err){
-// 					return next(err)
-// 				}
-// 				return res.send({success:'success'})
-// 			})
-// 		}
-// 	})
-// })
 
 // \\// PROFILE PAGE
 apiRouter.get('/profile', isLoggedIn, function(req, res){

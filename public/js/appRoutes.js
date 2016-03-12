@@ -8,7 +8,6 @@ angular.module('musicSeen')
 			.when('/insights', {
 				templateUrl : '/html/insights.html',
 				controller	: 'controlInsights',
-				// { window.location.href="/insights" }
 			})
 			.when('/locals', {
 				templateUrl : '/html/locals.html',
@@ -26,4 +25,12 @@ angular.module('musicSeen')
 				templateUrl : '/html/profile.html',
 				controller	: 'controlProfile'
 			})
+			// .when('/playsmap', {
+			// 	templateUrl : '/html/playsmap.html',
+			// 	controller	: 'controlPlays'
+			// })
+			// .when('/genremap', {
+			// 	templateUrl : '/html/genremap.html',
+			// 	controller	: 'controlGenres'
+			// })
 	}])

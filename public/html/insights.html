@@ -1,12 +1,7 @@
-<div class="container-fluid">
-<div class="row col-md-12">
-    <select class="insightSelector">
-        <option value="genre">Category</option>
-        <option value="topTracks">Top Tracks</option>
+<div class="container-fluid" ng-controller="controlInsights">
+	<select ng-model="template" ng-options="t.name for t in templates">
     </select>
-    <div>
-    	<button ng-click="updateGeojson()">Show Genre Map</button>
-        <leaflet geojson="geojson" lf-center="center" defaults="defaults" legend="legend" width="100%" height="800px"></leaflet>
-    </div>
-</div>
+    
+    <div ng-include src="template.url" include-replace></div>
+
 </div>

@@ -1,20 +1,21 @@
 var Tour = require('../app/models/tourModel.js')
 
 function createTour(req, res){
+	console.log(req.body)
 	var newTour 		= new Tour({
-						creator 	: req.body._id,
-						tourName 	: req.body.tourName,
-						tourLogo 	: req.body.tourLogo,
-						tourDate	: req.body.tourDate,
-						venueName	: req.body.venueName,
-						venueAddy	: req.body.venueAddy
+						creator 	: req.user._id,
+						tourName 	: req.body.name,
+						// tourLogo 	: req.body.tourLogo,
+						tourDates	: req.body.tourDates
+						// venueName	: req.body.venue,
+						// venueAddy	: req.body.addy
 					})	
 
 						newTour.save(function(err, done){
 							console.log('saving newTour')
 							if (err)
 								throw err;
-							return done(null, newTour)
+							res.send(done)
 						})
 }				
 

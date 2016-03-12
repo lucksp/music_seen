@@ -31,18 +31,28 @@ var countryMatches = function (countryName, countryIndex){
 						return 'TOP TAGS ERROR',err
 						console.log('TOP TAGS ERROR', err)
 					}
-					// console.log(countryName, geoTracks.track[0].name, '====', topTags.tag)
+					// console.log(countryName, geoTracks.track[0].name, '====: TAG 0', topTags.tag[0], 'TAG 1: ', topTags.tag[1])
 					// console.log('====', countryName, geoTracks.track[0].name, geoTracks.track[0].artist.name, topTags.tag[0].name)
 		//  WRITE TAG RESULTS TO JSON FILE 
+					else if (geoTracks.track[0].name === 'Hello' && geoTracks.track[0].artist.name === 'Adele'){
+						tagJson.features[countryIndex].properties.genre = 'soul'
+					}
 
-					tagJson.features[countryIndex].properties.genre = topTags.tag[0].name
-					tagJson.features[countryIndex].properties.url = geoTracks.track[0].url
-					var tagString = JSON.stringify(tagJson)
-					fs.writeFile('./app/models/tagjson.geo.json', tagString, function(err){
-						// console.log(err)
+					else if (topTags.tag[0].name === 'love at first listen'){
+						tagJson.features[countryIndex].properties.genre = topTags.tag[1].name
+					}
+					else{
+						tagJson.features[countryIndex].properties.track = geoTracks.track[0].name
+						tagJson.features[countryIndex].properties.artist = geoTracks.track[0].artist.name
+						tagJson.features[countryIndex].properties.genre = topTags.tag[0].name
+						tagJson.features[countryIndex].properties.url = geoTracks.track[0].url
+						var tagString = JSON.stringify(tagJson)
+						fs.writeFile('./app/models/tagjson.geo.json', tagString, function(err){
+							// console.log(err)
+						
 					})
 					// console.log('tagJson written')
-
+					}
 				})
 			}
 		})
@@ -57,27 +67,3 @@ for(var i = 0; i < country.features.length; i++){
 module.exports = {
 	countryTopTags : countryMatches
 }
-
-		// else {
-		// 	lfm.chart.getTopTracks({
-		// 		limit: 3
-		// 	},function(err, chartTracks){
-		// 		if(err){
-		// 			// console.log(err)
-		// 			return 'chartTopTracks did not run', err
-		// 		}
-		// 		else {
-		// 			console.log(countryName, 'top Tracks ===', chartTracks.track[0].name, 'has playcount ===', chartTracks.track[0].playcount)
-		// 			// console.log(countryName, 'top Tracks ===', geoTracks.track)
-
-		// 				// console.log('geoTracks', geoTracks.track[0].name, 'chartTracks', chartTracks.track[0].name)
-						
-		// 				// if (geoTracks.track[0].name === chartTracks.track[0].name || geoTracks.track[1].name === chartTracks.track[1].name || geoTracks.track[2].name === chartTracks.track[2].name){
-		// 				// 		country.features.properties.track1 		= geoTracks.track[0].name,
-		// 				// 		country.features.properties.playcount1 	= chartTracks.track[0].playcount,
-		// 				// 		country.features.properties.playLink1 	= geoTracks.track[0].url,
-		// 				// 						// console.log(country.features.properties)
-		// 				// }
-		// 			}	
-				// }
-			// )}

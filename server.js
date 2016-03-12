@@ -40,10 +40,6 @@ app.use('/api/lib', apiRoutes) // Initialize routes to use
 
 // require('./app/routes.js')(app, passport); // load our routes and pass in our app and fully configured passport
 
-// home route
-// app.get('/', function (req, res) {
-//   res.sendFile('index.html', {root: './public/html'})
-// })
 
 // launch ======================================================================
 app.listen(port);

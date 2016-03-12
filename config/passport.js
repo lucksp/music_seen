@@ -32,7 +32,7 @@ module.exports = function(passport) {
 					console.log(err)
 				}
 				else if (user) {
-					return done(null, false) //HOW TO ADD A REQ.FLASH MESSAGE?
+					return done(null, user) //HOW TO ADD A REQ.FLASH MESSAGE?
 				}
 				else {
 					var newUser 			= new User()

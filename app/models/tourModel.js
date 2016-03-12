@@ -5,12 +5,12 @@ var User 		= require('./userModel.js')
 
 // User Model/Schema
 var tourSchema 	= mongoose.Schema({
-			creator		: { type: Number, ref: 'User' },
+			creator		: { type: mongoose.Schema.ObjectId, ref: 'User' },
 			tourName	: String,
 			tourLogo	: String,
-			tourDate	: String,
-			venueName	: String,
-			venueAddy	: String
+			tourDates	: Array
+			// venueName	: String,
+			// venueAddy	: String
 	})
 
 	// Export

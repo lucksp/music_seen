@@ -10,12 +10,13 @@ $scope.login = function(){
                 data   : $scope.loginForm
             }).then(function(returnData){
                 console.log(returnData)
-                if ( returnData.data.success ) { 
-                	window.location.href="#/profile" 
-                }
-                else {
-                	console.log('Could not log in because', returnData)
-                }
+                    if ( returnData.data.error ){
+                        $scope.error = returnData.data.error
+                        console.log($scope.error)
+                    }
+                    if ( returnData.data.success ) {
+                         { window.location.href="#/profile" }
+                    } 
             })
 }
 

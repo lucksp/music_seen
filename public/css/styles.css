@@ -13,17 +13,13 @@
     font-weight: 300;
 }
 
-/** {
-    position: relative;
-}*/
-
 html, body {
     height: 100%;
     width: 100%;
 }
 
 body {
-    background-color: #2f2f2f;
+    background-color: #ECECEC;
     font-family: "Titillium Web", sans-serif;
     font-weight: normal;
     overflow-x: hidden;
@@ -72,13 +68,43 @@ body {
     top: 0;
     width: 100%;
     margin: 0;
-    opacity: 0.7;
-    padding-left: 115px;
+    font-weight: 400;
+    font-size: 1.5rem;
+    border-radius: 0;
+    border: none;
+    padding: 10px 0;
+    background-color: #D2D7D3;
+    font-size: 1.75rem;
+}
+
+.navbar-nav {
+    text-align: center;
+    float: right;
+    padding-right: 115px;
+}
+
+.navbar-nav ul {
+    /*color: #0e2f44;*/
+}
+
+.navbar-nav li {
+    padding: 0 25px;
+}
+
+.navbar-default .navbar-nav>li>a {
+    color: #0e2f44;
 }
 
 /*INDEX*/
 .indexText h2 {
     color: #fff;
+    font-size: 8rem;
+}
+
+
+/*FORMS*/
+.errorMessage {
+    color: red
 }
 
  /*INSIGHT MAP */
@@ -110,4 +136,11 @@ body {
 .profilePic img {
     width: 150px;
     height: 150px;
+}
+
+
+/* INSIGHTS */
+
+.insights h2 {
+    text-align: center;
 }
