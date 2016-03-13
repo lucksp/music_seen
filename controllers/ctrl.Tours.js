@@ -1,4 +1,5 @@
 var Tour = require('../app/models/tourModel.js')
+var User = require('../app/models/userModel.js')
 var geocoderProvider = 'google'
 var httpAdapter = 'http'
 
@@ -46,10 +47,12 @@ function createTour(req, res){
 }
 
 function getDates (req, res){
-	console.log(req.params)
-	Tour.find({}, function(err, docs){
-		res.send(docs)
-	})
+	var defaultPop = 'Users'
+
+		Tour.find({}, function(err, docs){
+			res.send(docs)
+			// console.log('This is the Get Dates Controller Result:', docs)
+		})
 }
 
 module.exports = {	
