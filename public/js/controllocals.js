@@ -40,7 +40,7 @@ angular.module('musicSeen')
                         }
                     })
             }
-            console.log($scope.markers)
+            console.log($scope.markers  )
 
             // Add marker to the markers object
             // $scope.markers[responseData.data[i]] = marker;
