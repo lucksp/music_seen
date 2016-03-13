@@ -14,7 +14,7 @@ angular.module('musicSeen')
              function countryClick(country, event) {
                 country = country.feature;
                 console.log('countryClick function')
-                // console.log(country.properties.name);
+                console.log(country.properties.name);
             }
 
             function style(feature) {
@@ -49,8 +49,8 @@ angular.module('musicSeen')
                 },
         legend: {
                 position: 'bottomleft',
-                colors: [ '#1F3A93',  '#81CFE0',  '#F2784B', '#D91E18',  '#87D37C',  '#2C3E50',  '#BF55EC', "green"],
-                labels: [ 'Rock',     'Indie',    'World',   'BritPop',  'AltRock',  'Metal',    'R&B', 'Soul']
+                colors: [ '#EC644B',  '#F79342',  '#FBBF37', '#87D37C',  '#22A7F0',  '#4B528A',  '#8154BD', "#D2527F"],
+                labels: [ 'Rock',     'Indie',    'World',   'BritPop',  'AltRock',  'Metal',    'R&B'    , 'Soul']
                 },
         defaults: {
                 scrollWheelZoom: false
@@ -81,40 +81,40 @@ $scope.tagsGeojson = function() {
                     fillOpacity: 0.7
                   }
                   if (feature.properties.genre === 'rock') {
-                    myStyles.fillColor = "#1F3A93"
+                    myStyles.fillColor = "#EC644B"
                   }
                   else if (feature.properties.genre === 'indie') {
-                    myStyles.fillColor = "#81CFE0"
+                    myStyles.fillColor = "#F79342"
                   }
                   else if (feature.properties.genre === 'indie rock') {
-                    myStyles.fillColor = "#81CFE0"
-                  }
-                  else if (feature.properties.genre === 'Hip-Hop') {
-                    myStyles.fillColor = "#F2784B"
-                  }
-                  else if (feature.properties.genre === 'rap') {
-                    myStyles.fillColor = "#F2784B"
+                    myStyles.fillColor = "#F79342"
                   }
                   else if (feature.properties.genre === 'soul') {
-                    myStyles.fillColor = "green"
+                    myStyles.fillColor = "#D2527F"
+                  }
+                  else if (feature.properties.genre === 'Hip-Hop') {
+                    myStyles.fillColor = "#FBBF37"
+                  }
+                  else if (feature.properties.genre === 'rap') {
+                    myStyles.fillColor = "#FBBF37"
                   }
                   else if (feature.properties.genre === 'femail vocalists') {
-                    myStyles.fillColor = "#F2784B"
+                    myStyles.fillColor = "#FBBF37"
                   }
                   else if (feature.properties.genre === 'dubstep') {
-                    myStyles.fillColor = "#F2784B"
+                    myStyles.fillColor = "#FBBF37"
                   }
                   else if (feature.properties.genre === 'britpop') {
-                    myStyles.fillColor = "#D91E18"
+                    myStyles.fillColor = "#87D37C"
                   }
                   else if (feature.properties.genre === 'alternative') {
-                    myStyles.fillColor = "#87D37C"
+                    myStyles.fillColor = "#22A7F0"
                   }
                   else if (feature.properties.genre === 'metal') {
-                    myStyles.fillColor = "#87D37C"
+                    myStyles.fillColor = "#4B528A"
                   }
                   else if (feature.properties.genre === 'r&b') {
-                    myStyles.fillColor = "#BF55EC"
+                    myStyles.fillColor = "#8154BD"
                   }
                   return myStyles
                 }

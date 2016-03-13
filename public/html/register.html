@@ -1,20 +1,21 @@
-
-		<form ng-submit="register()">
-		  <fieldset class="form-group">
-		    <label for="registerUserName">Requested User Name</label>
-		    <input type="text" class="form-control" id="registerUserName" ng-model="registerForm.username">
-		  </fieldset>
-		  <fieldset class="form-group">
-		    <label for="registerEmail">Email Address</label>
-		    <input type="email" class="form-control" id="registerEmail" placeholder="Email Address" ng-model="registerForm.email">
-		  </fieldset>
-		  <fieldset class="form-group">
-		    <label for="registerPassword">Password</label>
-		    <input type="password" class="form-control" id="registerPassword" placeholder="Password" ng-model="registerForm.password">
-		  </fieldset>
-		  <fieldset class="form-group">
-		    <label for="registerArtist">Musical Artist Name</label>
-		    <input type="text" class="form-control" id="registerArtist" ng-model="registerForm.artist">
-		  </fieldset>
-		    <input type="submit" class="btn btn-primary">
-		</form>
+<div class="row col-xs-6 registerForm">
+	<form ng-submit="register()">
+	  <fieldset class="form-group">
+	    <label for="registerUserName">Requested User Name</label>
+	    <input type="text" class="form-control" id="registerUserName" ng-model="registerForm.username">
+	  </fieldset>
+	  <fieldset class="form-group">
+	    <label for="registerEmail">Email Address</label>
+	    <input type="email" class="form-control" id="registerEmail" placeholder="Email Address" ng-model="registerForm.email">
+	  </fieldset>
+	  <fieldset class="form-group">
+	    <label for="registerPassword">Password</label>
+	    <input type="password" class="form-control" id="registerPassword" placeholder="Password" ng-model="registerForm.password">
+	  </fieldset>
+	  <fieldset class="form-group">
+	    <label for="registerArtist">Musical Artist Name</label>
+	    <input type="text" class="form-control" id="registerArtist" ng-model="registerForm.artist">
+	  </fieldset>
+	    <input type="submit" class="btn btn-primary">
+	</form>
+</div>

@@ -41,6 +41,6 @@ for(var i = 0; i < country.features.length; i++){
 		playsPerCountry(countryName, i)
 	}
 
-module.exports = {
-	playsPerCountry : playsPerCountry
-}
+// module.exports = {
+// 	playsPerCountry : playsPerCountry
+// }

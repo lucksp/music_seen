@@ -1,16 +1,9 @@
 <div ng-controller="controlGenres">
-<div class="row col-md-12 insights">
-	
-</div>
-<div class="row col-md-12">
-	<h2> Genre of Top Tracks Music By Country</h2>
-    <div>
-    	<button ng-click="tagsGeojson()">Show Genre Map</button>
-        <leaflet geojson="geojson" lf-center="center" defaults="defaults" legend="legend" width="100%" height="800px"></leaflet>
-        <div class="worldmap country f32">
-                <div ng-show="selectedCountry"></div>
-                {{ selectedCountry.properties.name || 'No country'}}
-              </div>
+    <div class="row col-md-12" insights>
+    	<span>Genre of Top Tracks Music By Country</span> <span><button ng-click="tagsGeojson()">Show Genre Map</button></span>
+
+        <div>
+            <leaflet geojson="geojson" lf-center="center" defaults="defaults" legend="legend" width="100%" height="800px"></leaflet>
+        </div>
     </div>
-</div>
 </div>

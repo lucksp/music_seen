@@ -64,6 +64,6 @@ for(var i = 0; i < country.features.length; i++){
 		countryMatches(countryName, i)
 	}
 
-module.exports = {
-	countryTopTags : countryMatches
-}
+// module.exports = {
+// 	countryTopTags : countryMatches
+// }

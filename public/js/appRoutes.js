@@ -21,16 +21,8 @@ angular.module('musicSeen')
 				templateUrl : '/html/register.html',
 				controller	: 'controlRegister'
 			})
-			.when('/profile', {
+			.when('/profile/', {
 				templateUrl : '/html/profile.html',
 				controller	: 'controlProfile'
 			})
-			// .when('/playsmap', {
-			// 	templateUrl : '/html/playsmap.html',
-			// 	controller	: 'controlPlays'
-			// })
-			// .when('/genremap', {
-			// 	templateUrl : '/html/genremap.html',
-			// 	controller	: 'controlGenres'
-			// })
 	}])

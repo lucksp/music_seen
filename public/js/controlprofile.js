@@ -1,7 +1,9 @@
 angular.module('musicSeen')
     .controller('controlProfile',['$scope', '$http', 'factoryProfile', function($scope, $http, factoryProfile){
 
-	$scope.user = factoryProfile.User
+	$scope.user = factoryProfile.User.query(function(data){
+				console.log('optional callback!', data)
+	})
 
 	$scope.tour = {
 		tourDates: [{}]
@@ -13,7 +15,6 @@ angular.module('musicSeen')
 	}
 
 	$scope.tourAdded = true
-
 	$scope.createTour = function(){
 		console.log($scope.tour)
 		$http({
@@ -21,17 +22,20 @@ angular.module('musicSeen')
 	                url    : '/tours',
 	                data   : $scope.tour
 	            }).then(function(returnData){
-	                // console.log(returnData.data)
+	                console.log(returnData.data)
 	                if ( returnData.data.error ){
 	                	$scope.error = 'The tour did not submit'
 	                	console.log($scope.error)
 	                }
 	                if ( returnData.data.success ) {
-	                	 { window.location.href="#/profile" }
+	                	 { window.location.href="#/profile/" }
 	                } 
 	            })
 	          $scope.tourAdded = !$scope.tourAdded
 	          $scope.tourForm = !$scope.tourForm
+
+	          $scope.tour = {}
+	          // $scope.tour.tourDates = {}
 	}
 
 	$scope.addMoreDates = function(){

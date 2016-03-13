@@ -13,7 +13,7 @@ angular.module('musicSeen')
 	                	window.location.href="#/register"
 	                }
 	                if ( returnData.data.success ) {
-	                	 { window.location.href="#/profile" }
+	                	 { window.location.href="#/profile/" }
 	                } 
 	            })
 	}

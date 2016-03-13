@@ -9,6 +9,7 @@ var db 					= require('./models/userModel.js')
 var mongoose 			= require('mongoose')
 var passport			= require('passport')
 var bcrypt 				= require('bcrypt-nodejs')
+var ctrlUsers			= require('../controllers/ctrl.Users.js')
 var ctrlTours			= require('../controllers/ctrl.Tours.js')
 //||\\ API routes
 
@@ -86,15 +87,17 @@ apiRouter.get('/profile', isLoggedIn, function(req, res){
 	res.send({user:req.user})
 })
 
-apiRouter.get('/profile/:username', isLoggedIn, function(req, res){
-	res.send({user:req.user})
-})
+// apiRouter.get('/profile', ctrlUsers.getUser)
 
 apiRouter.post('/update', function (req, res){ // ** ADD ISLOGGED IN
 	res.send({success:'success'})
 })
 
 apiRouter.post('/tours', ctrlTours.createTour)
+
+
+// LOCALS PAGE
+apiRouter.get('/tourDates', ctrlTours.getDates)
 
 // \\// LOGOUT USER
 apiRouter.get('/logout', function(req, res){
