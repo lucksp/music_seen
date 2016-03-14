@@ -2,13 +2,16 @@ angular.module('musicSeen')
     .controller('controlGenres',['$scope', '$http', 'leafletData', function($scope, $http, leafletData){
 
              $scope.$on("leafletDirectiveGeoJson.myMap.click", function(ev, leafletPayload) {
-                  console.log('$on')
                  countryClick(leafletPayload.leafletObject, leafletPayload.leafletEvent);
              });
 
+             $scope.listenMessage = false
+
              function countryClick(country, event) {
                 $scope.selectedCountry = country.feature
-                console.log('I am a click event:', event, 'Country Name =', $scope.selectedCountry.properties.name)
+                console.log('I am a click event:', event, 'Country Name =', $scope.selectedCountry.properties)
+                $scope.listenMessage = true
+
              }
 
              angular.extend($scope, {
@@ -27,8 +30,10 @@ angular.module('musicSeen')
                          }
              });
 
+
               $scope.tagsGeojson = function() {
                 $http.get('api/getTags').success(function(data, status) {
+                  // console.log(data.features.)
                   console.log('getting API TAGS data')
                     angular.extend($scope, {
                         geojson: {

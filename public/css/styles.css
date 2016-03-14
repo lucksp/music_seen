@@ -14,8 +14,8 @@
 }
 
 html, body {
-    height: 100%;
-    width: 100%;
+    min-height: 100%;
+    min-width: 100%;
 }
 
 body {
@@ -43,6 +43,11 @@ body {
     position: absolute;
     z-index: 100;
     padding: 2rem;
+}
+
+.logoDiv img {
+    height: 75%;
+    width: 75%;
 }
 
 .fullscreen-bg {
@@ -152,10 +157,49 @@ body {
     opacity: 0.7;
 }
 
-.mapDiv h3 {
+.worldmap.country {
+    font: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    position: absolute;
+    bottom: 1em;
+    right: 2em;
+    z-index: 100;
+    padding: .2em .5em;
+    line-height: 1.2em;
+    text-align: center;
+    background: rgba(255,255,255, 0.9);
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    border-radius: 5px;
+    padding: 6px 8px;
+}
+
+.genre h3 {
     position: relative;
     width: 100%;
     margin-top: 0;
+}
+
+.genreText {
+    padding-left: 0px;
+}
+
+.genreText li {
+    list-style-type: none;
+}
+
+.selectedCountry {
+    font-size: 2rem;
+    padding: 5px;
+}
+
+.selectedCountryArtist, .selectedCountryTrack, .selectedCountryListen {
+    font-size: 1.5rem;
+    padding: 5px;
+}
+
+.selectedCountryImg img {
+    border-radius: 50%;
+    box-shadow: 0 0 15px rgba(0,0,0,0.5);
 }
 
 /* LOCALS */
@@ -211,8 +255,8 @@ footer {
     /*position: relative;*/
     clear: both;
     background-color: #ECF0F1;
-    /*bottom: 0;*/
-    /*left: 0;*/
+    bottom: 0;
+    left: 0;
     width: 100%;
     padding: 20px 0;
 }

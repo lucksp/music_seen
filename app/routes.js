@@ -21,13 +21,13 @@ apiRouter.get('/api/lib', function(req, res){
 
 apiRouter.get('/api/getTags', function(req, res){
 	var tagJson = fs.readFileSync('./app/models/tagjson.geo.json', 'utf-8')
-	console.log('sending TAGjson from server')
+	// console.log('sending TAGjson from server')
 	res.json(JSON.parse(tagJson))
 });
 
 apiRouter.get('/api/getPlays', function(req, res){
 	var playsJson = fs.readFileSync('./app/models/playsjson.geo.json', 'utf-8')
-	console.log('sending PLAYSjson from server')
+	// console.log('sending PLAYSjson from server')
 	res.json(JSON.parse(playsJson))
 });
 
@@ -46,7 +46,7 @@ apiRouter.post('/register', function(req, res, next){
 		}
 		else {
 			req.login(user, function(){
-				console.log('successful POST register')
+				// console.log('successful POST register')
 				res.send({ success:'success' })	
 			})
 		}
@@ -63,7 +63,7 @@ apiRouter.isAuthenticated = function(req, res, next){
 
 // \\// PROCESS LOGIN DATA
 apiRouter.post('/login', function(req, res, next){
-	console.log(req.body)
+	// console.log(req.body)
 	var logMeIn = passport.authenticate('local-login', function(err, user){
 		if (err){
 			console.log(err)
@@ -74,7 +74,7 @@ apiRouter.post('/login', function(req, res, next){
 		}
 		else{
 				req.login(user, function(){
-				console.log('successful POST register')
+				// console.log('successful POST register')
 				res.send({ success:'success' })	
 			})		
 		}

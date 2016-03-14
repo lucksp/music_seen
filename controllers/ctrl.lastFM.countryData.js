@@ -21,8 +21,8 @@ var countryMatches = function (countryName, countryIndex){
 		}
 		else{
 // CALL TOP TAGS BY TRACK BASED ON GEO ABOVE
-					// console.log(countryName,'=====', geoTracks.track[0].name)
-					// console.log(countryName,'=====', geoTracks.track[0].artist.name)
+					// console.log(countryName,'=====', geoTracks.track[0].name, 'by',  geoTracks.track[0].artist.name)
+					console.log(countryName,'=====', geoTracks.track[0].image[1]['#text'])
 				lfm.track.getTopTags({
 					track: geoTracks.track[0].name,
 					artist: geoTracks.track[0].artist.name
@@ -36,20 +36,28 @@ var countryMatches = function (countryName, countryIndex){
 		//  WRITE TAG RESULTS TO JSON FILE 
 					else if (geoTracks.track[0].name === 'Hello' && geoTracks.track[0].artist.name === 'Adele'){
 						tagJson.features[countryIndex].properties.genre = 'soul'
+						tagJson.features[countryIndex].properties.track = geoTracks.track[0].name
+						tagJson.features[countryIndex].properties.artist = geoTracks.track[0].artist.name
+						tagJson.features[countryIndex].properties.url = geoTracks.track[0].url
+						tagJson.features[countryIndex].properties.img = geoTracks.track[0].image[1]['#text']
 					}
 
 					else if (topTags.tag[0].name === 'love at first listen'){
 						tagJson.features[countryIndex].properties.genre = topTags.tag[1].name
-					}
-					else{
 						tagJson.features[countryIndex].properties.track = geoTracks.track[0].name
 						tagJson.features[countryIndex].properties.artist = geoTracks.track[0].artist.name
-						tagJson.features[countryIndex].properties.genre = topTags.tag[0].name
 						tagJson.features[countryIndex].properties.url = geoTracks.track[0].url
+						tagJson.features[countryIndex].properties.img = geoTracks.track[0].image[1]['#text']
+					}
+					else{
+						tagJson.features[countryIndex].properties.genre = topTags.tag[0].name
+						tagJson.features[countryIndex].properties.track = geoTracks.track[0].name
+						tagJson.features[countryIndex].properties.artist = geoTracks.track[0].artist.name
+						tagJson.features[countryIndex].properties.url = geoTracks.track[0].url
+						tagJson.features[countryIndex].properties.img = geoTracks.track[0].image[1]['#text']
 						var tagString = JSON.stringify(tagJson)
 						fs.writeFile('./app/models/tagjson.geo.json', tagString, function(err){
 							// console.log(err)
-						
 					})
 					// console.log('tagJson written')
 					}
