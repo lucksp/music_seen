@@ -1,3 +1,8 @@
-<p>{{date.date}}</p>
-<p>{{date.venue}}</p>
-<p>{{date.addy}}</p>
+<div ng-controller="controlLocals" class="localPopup">
+	<div ng-repeat="(marker, $index) in markers">
+		<p>{{marker.tourName}}</p>
+		<p>{{marker[i].date}}</p>
+		<p>{{marker[i].venue}}</p>
+		<p>{{marker[i].addy}}</p>
+	</div>
+</div>

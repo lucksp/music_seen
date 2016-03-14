@@ -1,8 +1,9 @@
 angular.module('musicSeen')
-    .controller('controlProfile',['$scope', '$http', 'factoryProfile', function($scope, $http, factoryProfile){
+    .controller('controlProfile',['$scope', '$http', function($scope, $http){
 
-	$scope.user = factoryProfile.User.query(function(data){
-				console.log('optional callback!', data)
+	$http.get('/profile').then(function(responseData){
+		$scope.user = responseData.data.user
+		console.log($scope.user)
 	})
 
 	$scope.tour = {

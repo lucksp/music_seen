@@ -19,7 +19,7 @@ html, body {
 }
 
 body {
-    background-color: #ECECEC;
+    background-color: #ECF0F1;
     font-family: "Titillium Web", sans-serif;
     font-weight: normal;
     overflow-x: hidden;
@@ -27,7 +27,7 @@ body {
 }
 
 .shellDiv {
-    height: 100vh;
+    height: 90vh;
     padding-top: 150px;
 }
 
@@ -78,7 +78,7 @@ body {
     border-radius: 0;
     border: none;
     padding: 10px 0;
-    background-color: #D2D7D3;
+    background-color: transparent;
     font-size: 1.75rem;
 }
 
@@ -88,16 +88,24 @@ body {
     padding-right: 115px;
 }
 
-.navbar-nav ul {
-    /*color: #0e2f44;*/
+.navbar-nav li {
+    /*padding: 0 25px;*/
+    margin: 0 10px;
+    border: 2px solid rgb(131, 217, 42);
+    border-radius: 10px;
 }
 
-.navbar-nav li {
-    padding: 0 25px;
+.navbar-nav li:hover {
+    background-color: #0e2f44;
 }
 
 .navbar-default .navbar-nav>li>a {
     color: #0e2f44;
+    padding: 15px 25px;
+}
+
+.navbar-default .navbar-nav>li>a:hover {
+    color: rgb(131, 217, 42);
 }
 
 /*INDEX*/
@@ -123,6 +131,7 @@ body {
     font-size: 3rem;
     border: 1px solid #83d92a;
     border-radius: 0;
+    margin-left: 100px;
  }
 
 .legend {
@@ -143,10 +152,20 @@ body {
     opacity: 0.7;
 }
 
+.mapDiv h3 {
+    position: relative;
+    width: 100%;
+    margin-top: 0;
+}
+
 /* LOCALS */
 .locals {
     position: relative;
     padding-top: 100px;
+}
+
+.localPopup {
+    width: auto;
 }
 
 /* LOGIN */
@@ -183,13 +202,17 @@ body {
     padding: 0;
 }
 
+.leaflet-control-attribution {
+    display: none;
+}
+
 /* FOOTER */
-/*footer {
-    background-color: red;
-    position: relative;
-    bottom: 0;
-    left: 0;
+footer {
+    /*position: relative;*/
+    clear: both;
+    background-color: #ECF0F1;
+    /*bottom: 0;*/
+    /*left: 0;*/
     width: 100%;
     padding: 20px 0;
-    border-radius: 0;
-}*/
+}

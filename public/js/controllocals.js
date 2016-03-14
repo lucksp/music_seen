@@ -1,14 +1,3 @@
-// angular.module('musicSeen')
-// 	.directive('popup', ['$http', '$compile', function($http, $compile) {
-//     return {
-//         restrict: 'E',
-//         scope: {
-//             tourDate: "="
-//         },
-//         templateUrl: './html/localTourInfo.html'
-//     };
-// }]);
-
 angular.module('musicSeen')
     .controller('controlLocals',['$scope', '$http', function($scope, $http){
 
@@ -24,44 +13,20 @@ angular.module('musicSeen')
 
         $scope.markers = []
         $http.get('/tourDates').then(function (responseData) {
-            // console.log(responseData.data.length)
+            // console.log(responseData.data)
             for (var i = 0; i < responseData.data.length; i++){
-                console.log('Adding Marker DATA: Latitude = ',responseData.data[i].tourDates[0].latitude, 'Longitude = ', responseData.data[i].tourDates[0].longitude)
+                // console.log('Adding Marker DATA: Latitude = ',responseData.data[i].tourDates[0].latitude, 'Longitude = ', responseData.data[i].tourDates[0].longitude)
                     $scope.markers.push({
-                        title: responseData.data[i].tourDates[0].venue,
+                        tourName: responseData.data[i].tourName,
                         lat: responseData.data[i].tourDates[0].latitude,
                         lng: responseData.data[i].tourDates[0].longitude,
-                        // focus: true,
-                        label: {
-                                  message: responseData.data[i].tourDates[0].venue,
-                                  options: {
-                                        noHide: true
-                                   }
-                        }
-                    })
+                        date: responseData.data[i].tourDates[0].date,
+                        venue: responseData.data[i].tourDates[0].venue,
+                        addy: responseData.data[i].tourDates[0].addy,
+                        message: responseData.data[i].tourName + '<br>' + responseData.data[i].tourDates[0].date + '<br>' + responseData.data[i].tourDates[0].venue + '<br>' + responseData.data[i].tourDates[0].addy
+                        // message: "<div ng-include src=\"'./html/localTourInfo.html'\"></div>"
+                        })
             }
-            console.log($scope.markers  )
-
-            // Add marker to the markers object
-            // $scope.markers[responseData.data[i]] = marker;
+            console.log('$scope.markers: ', $scope.markers)
         })
-
-        
-    	// var promiseDates = ServiceDates.getDates();
-     //            $scope.markers = [];
-     //            promiseDates.then(function(dates) {
-     //                $scope.tourDates = dates.dates;
-     //                var i = 0;
-     //                angular.forEach($scope.dates, function(date) {
-     //                    $scope.markers.push({
-     //                        lat: date.latitude, 
-     //                        lng: date.longitude, 
-     //                        getMessageScope: function() { return $scope; },
-     //                        message: "<popup date='dates[" + i + "]'></popup>"
-     //                    });
-     //                    i++;
-     //                });
-     //            });
-               
-
 }]);
