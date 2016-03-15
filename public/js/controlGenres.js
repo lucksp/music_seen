@@ -22,8 +22,8 @@ angular.module('musicSeen')
                          },
                  legend: {
                          position: 'bottomleft',
-                         colors: [ '#EC644B',  '#F79342',  '#FBBF37', '#87D37C',  '#22A7F0',  '#4B528A',  '#8154BD', "#D2527F"],
-                         labels: [ 'Rock',     'Indie',    'World',   'BritPop',  'AltRock',  'Metal',    'R&B'    , 'Soul']
+                         colors: [ '#EC644B',  '#F79342',  '#FBBF37', '#87D37C',  '#22A7F0',  '#4B528A',  '#8154BD', "#D2527F", "#5e5e5e"],
+                         labels: [ 'Rock',     'Indie',    'World',   'BritPop',  'AltRock',  'Metal',    'R&B'    , 'Soul'   , 'Other']
                          },
                  defaults: {
                          scrollWheelZoom: false
@@ -40,12 +40,14 @@ angular.module('musicSeen')
                             data: data,
                             style: function(feature){
                               var myStyles = {
-                                fillColor: '#5e5e5e',
+                                fillColor: '#fff',
                                 weight: 1,
                                 opacity: 1,
                                 color: 'white',
                                 fillOpacity: 0.7
                               }
+                              console.log(feature.properties.name, '===', feature.properties.genre)
+
                               if (feature.properties.genre === 'rock') {
                                 myStyles.fillColor = "#EC644B"
                               }
@@ -81,6 +83,12 @@ angular.module('musicSeen')
                               }
                               else if (feature.properties.genre === 'r&b') {
                                 myStyles.fillColor = "#8154BD"
+                              }
+                              else if (feature.properties.genre === undefined ) {
+                                myStyles.fillColor = "#000"
+                              }
+                              else {
+                                myStyles.fillColor = "#5e5e5e"
                               }
                               return myStyles
                             }

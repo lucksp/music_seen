@@ -1,19 +1,20 @@
   
 <div class="container">
-  <div class="row col-xs-12 profile">
+  <div class="row col-xs-12">
     <h3>Welcome back, {{user.local.username}}</h3>
-      <div class="profilePic">
-        <img src="img/default_user.png">
-      </div>
   </div>
+  <div class="row col-xs-6 profile">
+        <img src="img/default_user.png">
+        <h4>Your Existing Tours</h4>
+
+      </div>
             <!-- <p>You last logged in {{date}}</p> -->
   <div>
         <a href="/logout"><button>Log Out</button></a>
   </div>
-    </div>
     <!-- PROFILE EDITS -->
-    <div class="container">
-      <!-- <div class="row col-xs-6"
+    <!-- <div class="container"> -->
+      <!-- <div class="row col-xs-6">
         <h5 ng-click="profileUpdate">Update Your Profile:</h5>
       </div>
         <form ng-submit="tourData" ng-hide="updateForm">
@@ -30,34 +31,36 @@
         <p ng-show="">Thank you!</p>
     </div> -->
     <!-- TOUR DATES -->
-    <div class="container">
-        <h5 ng-click="addTour()">Add a new Tour:</h5>
-        <form ng-submit="createTour()" ng-hide="tourForm">
-            <fieldset class="form-group">
-            <label for="tourName">Tour Name</label>
-            <input type="text" class="form-control" id="tourName" placeholder="Name of Tour" ng-model="tour.name">
-          </fieldset>
-            <!-- <fieldset class="form-group">
-            <label for="tourLogo">Tour Logo</label>
-            <input type="upload" class="form-control" id="tourLogo" ng-model="tour.logo">
-          </fieldset>  -->
-          <div class="tourDates" ng-repeat="date in tour.tourDates">
-            <fieldset class="form-group">
-              <label for="tourDates">Tour Dates</label>
-              <input type="date" class="form-control" id="tourDates" ng-model="date.date">
+      <div class="row col-xs-8">
+          <h4 ng-click="addTour()" class="tourAddRow">Add a new Tour:</h4>
+          <form class="addTourForm" ng-submit="createTour()" ng-hide="tourForm">
+              <fieldset class="form-group">
+              <label for="tourName">Tour Name</label>
+              <input type="text" class="form-control" id="tourName" placeholder="Name of Tour" ng-model="tour.name">
             </fieldset>
-            <fieldset class="form-group">
-              <label for="tourVenue">Venue Name</label>
-              <input type="text" class="form-control" id="tourVenue" placeholder="Venue" ng-model="date.venue">
-            </fieldset>
-            <fieldset class="form-group">
-              <label for="tourAddress">Address</label>
-              <input type="text" class="form-control" id="tourAdress" placeholder="Address" ng-model="date.addy">
-            </fieldset>
-          </div>
-          <hr>
-          <button type="button" class="btn btn-primary" ng-click="addMoreDates()">Add More Dates</button><br>
-          <input type="submit" class="btn btn-primary"><span class="errorMessage">{{error}}</span>
-        </form>
-        <p ng-hide="tourAdded">Thank you!</p>
+              <!-- <fieldset class="form-group">
+              <label for="tourLogo">Tour Logo</label>
+              <input type="upload" class="form-control" id="tourLogo" ng-model="tour.logo">
+            </fieldset>  -->
+            <div class="tourDates" ng-repeat="date in tour.tourDates">
+              <fieldset class="form-group">
+                <label for="tourDates">Tour Dates</label>
+                <input type="date" class="form-control" id="tourDates" ng-model="date.date">
+              </fieldset>
+              <fieldset class="form-group">
+                <label for="tourVenue">Venue Name</label>
+                <input type="text" class="form-control" id="tourVenue" placeholder="Venue" ng-model="date.venue">
+              </fieldset>
+              <fieldset class="form-group">
+                <label for="tourAddress">Address</label>
+                <input type="text" class="form-control" id="tourAdress" placeholder="Address" ng-model="date.addy">
+              </fieldset>
+            </div>
+            <hr>
+            <button type="button" class="btn btn-warning addMoreDatesBtn" ng-click="addMoreDates()">Add More Dates</button><br>
+            <input type="submit" class="btn btn-primary"><span class="errorMessage">{{error}}</span>
+          </form>
+          <p ng-hide="tourAdded">Thank you!</p>
+        </div>
     </div>
+  </div>

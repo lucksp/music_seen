@@ -1,0 +1,41 @@
+/*NAVBAR */
+.navbar {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    margin: 0;
+    font-weight: 400;
+    font-size: 1.5rem;
+    border-radius: 0;
+    border: none;
+    padding: 10px 0;
+    background-color: transparent;
+    font-size: 1.75rem;
+    z-index: 150;
+    color: rgb(131, 217, 42);
+}
+
+.navbar-nav {
+    text-align: center;
+    float: right;
+    padding-right: 115px;
+}
+
+.navbar-nav li {
+    margin: 0 20px;
+    border: 2px solid #0e2f44;
+    border-radius: 10px;
+}
+
+.navbar-nav li:hover {
+    background-color: #0e2f44;
+}
+
+.navbar-default .navbar-nav>li>a {
+    color: rgb(131, 217, 42);
+    padding: 15px 25px;
+}
+
+.navbar-default .navbar-nav>li>a:hover {
+    color: rgb(131, 217, 42);
+}

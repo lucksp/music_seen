@@ -27,7 +27,7 @@ body {
 }
 
 .shellDiv {
-    height: 90vh;
+    height: 100vh;
     padding-top: 150px;
 }
 
@@ -41,8 +41,8 @@ body {
 
 .logoDiv {
     position: absolute;
-    z-index: 100;
     padding: 2rem;
+    z-index: 200;
 }
 
 .logoDiv img {
@@ -57,19 +57,23 @@ body {
     bottom: 0;
     right: 0;
     overflow: hidden;
-    z-index: -100;
 }
 
 .fullscreen-bg__video {
-    position: relative;
-    top: 0;
-    left: 0; 
-    bottom: 0;
-    right: 0;
+    position: fixed;
+    top: 50%;
+    left: 50%; 
     min-width: 100vw; 
     min-height: 100vh;
     width: auto;
     height: auto;
+    z-index: -100;
+    -ms-transform: translateX(-50%) translateY(-50%);
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+    /*background: url() no-repeat;*/
+    background-size: cover;
 }
 
 /*NAVBAR */
@@ -85,6 +89,7 @@ body {
     padding: 10px 0;
     background-color: transparent;
     font-size: 1.75rem;
+    z-index: 150;
 }
 
 .navbar-nav {
@@ -95,7 +100,7 @@ body {
 
 .navbar-nav li {
     /*padding: 0 25px;*/
-    margin: 0 10px;
+    margin: 0 20px;
     border: 2px solid rgb(131, 217, 42);
     border-radius: 10px;
 }
@@ -114,11 +119,14 @@ body {
 }
 
 /*INDEX*/
+.indexDiv{
+    height: 100vh;
+} 
+
 .indexText h2 {
     color: #fff;
     font-size: 8rem;
 }
-
 
 /*FORMS*/
 .errorMessage {
@@ -208,24 +216,49 @@ body {
     padding-top: 100px;
 }
 
-.localPopup {
+.mapDiv {
+    text-align: center;
+}
+
+/*.localPopup {
     width: auto;
+}*/
+
+.locals{
+    display: flex;
+    padding: 10px;
 }
 
-/* LOGIN */
+.localCol ul {
+    list-style-type: none;
+    padding: 10px;
+}
 
-.loginForm, .registerForm {
+.angular-leaflet-map {
+    margin-left: 10px;
+}
+
+ /*LOGIN */
+
+.modal-content {
+    padding: 0 15px;
+}
+
+/*.loginForm, .registerForm {
     margin-left: 150px;
-}
+}*/
 
-/* PROFILE PAGE */
+ PROFILE PAGE 
 
 .profile {
     position: relative;
     top: 0;
+    right: 0;
+    float: right;
+    text-align: right;
 }
 
-.profilePic img {
+.profile img {
     width: 150px;
     height: 150px;
 }
@@ -250,13 +283,31 @@ body {
     display: none;
 }
 
-/* FOOTER */
+.tourAddRow {
+    background-color: ;
+    padding: 15px 5px;
+}
+
+.addTourForm {
+    margin-left: 15px;
+}
+
+.addMoreDatesBtn {
+    float: right;
+}
+
+ /*FOOTER */
 footer {
-    /*position: relative;*/
     clear: both;
     background-color: #ECF0F1;
-    bottom: 0;
-    left: 0;
     width: 100%;
     padding: 20px 0;
+}
+
+.copy p {
+    margin-bottom: 0;
+}
+
+.copy {
+    text-align: center;
 }

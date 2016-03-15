@@ -3,7 +3,7 @@ angular.module('musicSeen')
 
 	$http.get('/profile').then(function(responseData){
 		$scope.user = responseData.data.user
-		console.log($scope.user)
+		// console.log($scope.user)
 	})
 
 	$scope.tour = {
@@ -33,14 +33,15 @@ angular.module('musicSeen')
 	                } 
 	            })
 	          $scope.tourAdded = !$scope.tourAdded
-	          $scope.tourForm = !$scope.tourForm
 
 	          $scope.tour = {}
-	          // $scope.tour.tourDates = {}
+	          $scope.tour.tourDates = {}
 	}
 
 	$scope.addMoreDates = function(){
 		$scope.tour.tourDates.push({})
+		// $scope.tourForm = !$scope.tourForm
+
 	}
 
 }]);

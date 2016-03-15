@@ -22,7 +22,7 @@ var countryMatches = function (countryName, countryIndex){
 		else{
 // CALL TOP TAGS BY TRACK BASED ON GEO ABOVE
 					// console.log(countryName,'=====', geoTracks.track[0].name, 'by',  geoTracks.track[0].artist.name)
-					console.log(countryName,'=====', geoTracks.track[0].image[1]['#text'])
+					// console.log(countryName,'=====', geoTracks.track[0].image[1]['#text'])
 				lfm.track.getTopTags({
 					track: geoTracks.track[0].name,
 					artist: geoTracks.track[0].artist.name

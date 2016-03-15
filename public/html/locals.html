@@ -1,8 +1,19 @@
 <div class="row col-xs-12 mapDiv">
             <h3>Your Local Music, Scene</h3>
     <div class="container-fluid">
-        <div class="row col-xs-12">
-        	<leaflet lf-center="center" defaults="defaults" width="100%" markers="markers" height="800px"></leaflet>
-        </div>
+    	<div class="locals">
+    	<div class="localCol">
+    		<h4>Tour Date Column</h4>
+				<div ng-repeat="date in markers" class="">
+						<ul>
+							<li>{{date.date | date: 'shortDate'}}</li>
+							<li>{{date.artist}}</li>
+							<li>{{date.tourName}}</li>
+							<li>{{date.venue}}</li>
+							<li>{{date.addy}}</li>
+						</ul>
+				</div>
+		</div>
+			<leaflet lf-center="center" defaults="defaults" markers="markers" width="90%" height="800px"></leaflet>
     </div>
 </div>
