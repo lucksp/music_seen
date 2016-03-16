@@ -32,12 +32,11 @@ function createTour(req, res){
 			creator 	: req.user._id,
 			artist		: req.user.local.artist,
 			tourName 	: tour.name,
-			// tourLogo 	: req.body.tourLogo,
 			tourDates	: tour.tourDates
 				})
 				// console.log('I was in the NEW tour adder and am going to save')
 		newTour.save(function(err, done){
-			console.log('saving newTour')
+			// console.log('saving newTour')
 			console.log(err)
 			if (err) {
 				throw err;
@@ -46,7 +45,7 @@ function createTour(req, res){
 				res.send(done)
 			}
 		})
-		console.log('GeoCoded TourDates:', tour)
+		// console.log('GeoCoded TourDates:')
 	})
 }
 

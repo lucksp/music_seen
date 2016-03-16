@@ -16,6 +16,7 @@ $scope.login = function(){
                     }
                     if ( returnData.data.success ) {
                          { window.location.href="#/profile" }
+                         $scope.loginForm = {}
                     } 
             })
 }

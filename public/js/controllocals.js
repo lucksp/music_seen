@@ -19,20 +19,21 @@ angular.module('musicSeen')
             for (var i = 0; i < responseData.data.length; i++){
                 // console.log('in the loop @ i: ', i, responseData.data[i])
                     for (var j = 0; j < responseData.data[i].tourDates.length; j++){
+                        var jsonDate        = responseData.data[i].tourDates[j].date
+                        var formattedDate   = new Date(jsonDate)
+                        console.log(formattedDate)
                         // console.log('inside J loop: ', j, responseData.data[i].tourDates[j])
                         $scope.markers.push({
                         tourName    : responseData.data[i].tourName,
                         artist      : responseData.data[i].artist,
                         lat         : responseData.data[i].tourDates[j].latitude,
                         lng         : responseData.data[i].tourDates[j].longitude,
-                        date        : responseData.data[i].tourDates[j].date,
+                        date        : formattedDate,
                         venue       : responseData.data[i].tourDates[j].venue,
                         addy        : responseData.data[i].tourDates[j].addy,
-                        message     : responseData.data[i].artist + '<br>' + responseData.data[i].tourName + '<br>' + responseData.data[i].tourDates[j].date + '<br>' + responseData.data[i].tourDates[j].venue + '<br>' + responseData.data[i].tourDates[j].addy
+                        message     : responseData.data[i].artist + '<br>' + responseData.data[i].tourName + '<br>' + formattedDate + '<br>' + responseData.data[i].tourDates[j].venue + '<br>' + responseData.data[i].tourDates[j].addy
                         })
-                    }
-                    // message: "<div ng-include src=\"'./html/localTourInfo.html'\"></div>"
-                        
+                    }                        
             }
             console.log($scope.markers)
 
@@ -62,18 +63,5 @@ angular.module('musicSeen')
         $scope.showLocalList = function(){
             $scope.localList = ! $scope.localList
         }
-
-
-        // $scope.$watch('localSearch', function (newVal, oldVal) {
-        //             // Watch gets fired on scope initialization and when empty so differentiate:
-        //             if (newVal !== oldVal && newVal !== '') {
-        //                 // Has searchvalue, apply sourcedata, propertyname and searchstring to filter
-        //                 // and assign return value of filter to geojson 
-        //                 $scope.markers = $filter('filter')($scope.data, 'NAME', newVal);
-        //             } else {
-        //                 // Search has been initialized or emptied, assign sourcedata to geojsonobject
-        //                 $scope.markers = markers;
-        //             }
-        //         }, true);
         
 }]);
