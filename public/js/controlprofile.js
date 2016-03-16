@@ -12,8 +12,12 @@ angular.module('musicSeen')
 	}
 
 	$scope.tourForm = true
+	$scope.arrowUp = true
+	$scope.arrowDown = true
 	$scope.addTour = function(){
 		$scope.tourForm = !$scope.tourForm
+		$scope.arrowUp = !$scope.arrowUp
+		$scope.arrowDown = !$scope.arrowDown
 	}
 
 	$scope.tourAdded = true
@@ -41,7 +45,6 @@ angular.module('musicSeen')
 
 	$scope.addMoreDates = function(){
 		$scope.tour.tourDates.push({})
-		// $scope.tourForm = !$scope.tourForm
 	}
 
 	$scope.profileTourData = []
@@ -53,13 +56,26 @@ angular.module('musicSeen')
 	            $scope.profileTourData.push({
 	                tourName	: responseTourData.data[i].tourName,
 	                artist		: responseTourData.data[i].artist,
-	                date 		: responseTourData.data[i].tourDates[0].date,
-	                venue 		: responseTourData.data[i].tourDates[0].venue,
-	                addy 		: responseTourData.data[i].tourDates[0].addy,
+	                date 		: responseTourData.data[i].tourDates
 	                })
 	            console.log('$scope.profileTourData = ', $scope.profileTourData)
 	        }
 	    }
 	})
+
+	$scope.activeShowing = []
+	$scope.showUserTour = function(index){
+		var x = $scope.activeShowing.indexOf(index)
+		if (x >= 0){
+			$scope.activeShowing.splice(x, 1)
+		}
+		else {
+			$scope.activeShowing.push(index)
+		}
+	}
+
+	$scope.shouldShow = function(index){
+		return $scope.activeShowing.indexOf(index) >= 0
+	}
 
 }]);

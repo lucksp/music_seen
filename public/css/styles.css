@@ -26,6 +26,11 @@ body {
     -webkit-font-smoothing: antialiased !important;
 }
 
+.btn {
+    border-radius: 0;
+    box-shadow: 3px 3px 10px rgba(0,0,0,0.2);   
+}
+
 .rw-sentence span {
     white-space: nowrap;
     font-size: 100%;
@@ -54,11 +59,11 @@ body {
 }
 
 @keyframes rotateWordsFirst {
-    0% { opacity: 0; animation-timing-function: ease; height: 0px; }
-    15% { opacity: .1; height: 60px; }
-    40% { opacity: .75; height: 60px; }
+    0% { opacity: 0; animation-timing-function: linear; height: 0px; }
+    15% { opacity: .4; height: 60px; }
+    40% { opacity: 1; height: 60px; }
     50% { opacity: 1; height: 60px; }
-    60% { opacity: .5; height: 60px; }
+    60% { opacity: .4; height: 60px; }
     85% { opacity: .1; height: 60px; }
     100% { opacity: 0; height: 60px;}
 }
@@ -137,9 +142,8 @@ body {
 }
 
 .navbar-nav li {
-    /*padding: 0 25px;*/
     margin: 0 20px;
-    border: 2px solid rgb(131, 217, 42);
+    border: 2px solid #83d92a;
     border-radius: 10px;
 }
 
@@ -150,6 +154,7 @@ body {
 .navbar-default .navbar-nav>li>a {
     color: #0e2f44;
     padding: 15px 25px;
+    font-weight: bold;
 }
 
 .navbar-default .navbar-nav>li>a:hover {
@@ -189,10 +194,6 @@ body {
     border-right: none;
     border-bottom: 2px solid #76c623;
     box-shadow: none;
-}
-
-.input:-webkit-autofill {
-    background-color: red;
 }
  /*INSIGHTS */
 
@@ -286,11 +287,14 @@ body {
 .locals {
     position: relative;
     padding-top: 100px;
+    display: flex;
+    padding: 10px;
 }
 
 .mapDiv {
     text-align: center;
-    padding: 0;  
+    padding: 0; 
+    width: 100%; 
 }
 
 .mapDiv .container-fluid {
@@ -301,13 +305,16 @@ body {
     width: auto;
 }*/
 
-.locals{
-    display: flex;
-    padding: 10px;
+.locals h4 {
+    position: absolute;
+    text-align: center;
+    top: 0;
+    margin-left: 5%;
 }
 
 .localCol {
-    margin: 0 15px;
+    position: relative;
+    margin: 40px 15px;
     padding: 0;
 }
 
@@ -322,9 +329,6 @@ body {
     margin-bottom: 15px;
     background-color: #fbfcfc;
     box-shadow: 0 0 15px rgba(0,0,0,0.2);
-}
-
-.localCol li {
 }
 
 .colDate {
@@ -342,8 +346,7 @@ body {
 
 .fa-arrow-circle-o-left, .fa-arrow-circle-o-right {
     font-size: 5rem;
-    color: rgb(131, 217, 42);
-    /*text-shadow: 0 0 5px rgba(0,0,0,0.1);*/
+    color: #83d92a;
 }
 
 .fa-arrow-circle-o-left {
@@ -358,6 +361,17 @@ body {
 
 .angular-leaflet-map {
     margin-left: 10px;
+    margin-top: 40px;
+}
+
+.localSearchIcon {
+    border: none;
+    padding: 3px;
+    font-size: 2rem;
+}
+
+.localSearchIcon i {
+    color: #83d92a;
 }
 
  /*LOGIN */
@@ -377,27 +391,37 @@ body {
 
 /*PROFILE PAGE */
 
-.profileDiv h2 {
+.profileHead {
     text-align: center;
+    padding-bottom: 15px;
+}
+
+.profileData h3 {
+    text-align: left;
+}
+
+.logoutBtn {
+    float: right;
+    padding: 15px 5px;
+}
+
+.tourForm a {
+    color: white;
+}
+
+.tourForm a .btn:hover {
+    color: white;
 }
 
 .profileImg {
     position: relative;
-    float: right;
-    text-align: right;
 }
 
 .profileImg img {
+    padding-bottom: 10px;
+    display: block;
     width: 150px;
     height: 150px;
-}
-
-.profileData {
-    text-align: right;
-}
-
-.profileData h3 {
-    text-align: right;
 }
 
 .defaultDiv {
@@ -409,17 +433,22 @@ body {
     padding: 15px 5px;
 }
 
-.addTourForm {
-    margin-left: 15px;
+.tourAddRow {
+    margin-top: 160px;
 }
 
 .addMoreDatesBtn {
     float: right;
 }
 
-.userTourData {
-
+.userTourDates li {
+    list-style-type: none;
 }
+
+.tourForm .fa {
+    color: #83d92a;
+}
+
 
  /*FOOTER */
 footer {
@@ -435,4 +464,15 @@ footer {
 
 .copy {
     text-align: center;
+}
+
+@media (max-width: 600px){
+    .localCol leaflet {
+        display: none;
+    }
+
+    .localCol {
+        width: 100%;
+    }
+
 }

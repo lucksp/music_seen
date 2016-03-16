@@ -1,42 +1,28 @@
   
 <div class="container profileDiv">
-  <div class="row col-xs-12 ">
+  <div class="row col-xs-12">
     <h2 class="profileHead">Welcome back, {{user.local.username}}</h2>
   </div>
-  <div class="row col-xs-12 profileImg">
-    <img src="img/default_user.png">
-  </div>
-  <div class="row col-xs-12 profileData">
-      <a href="/logout"><button>Log Out</button></a>
-        <h3>Currently managing: {{user.local.artist}}</h3>
-          <h4>Your Existing Tours</h4>
-            <ul class="userTourData" ng-repeat="userTours in profileTourData">
-              <li>Tour Name: {{userTours.name}}</li>
-              <li>Venue: {{userTours.name}}</li>
-            </ul>
-  </div>
-            <!-- <p>You last logged in {{date}}</p> -->
-    <!-- PROFILE EDITS -->
-    <!-- <div class="container"> -->
-      <!-- <div class="row col-xs-6">
-        <h5 ng-click="profileUpdate">Update Your Profile:</h5>
-      </div>
-        <form ng-submit="tourData" ng-hide="updateForm">
-            <fieldset class="form-group">
-            <label for="updateEmail">Email</label>
-            <input type="text" class="form-control" id="updateEmail" ng-model="update.email">
-          </fieldset>
-          <fieldset class="form-group">
-            <label for="updateLogo">Update Your Logo</label>
-            <input type="upload" class="form-control" id="updateLogo" ng-model="update.logo">
-          </fieldset>
-          <input type="submit" class="btn btn-primary">
-        </form>
-        <p ng-show="">Thank you!</p>
-    </div> -->
-    <!-- TOUR DATES -->
-      <div class="row col-xs-8">
-          <h4 ng-click="addTour()" class="tourAddRow">Add a new Tour:</h4>
+  <div class="col-xs-6">
+    <div class="profileImg">
+        <img src="img/default_user.png">
+      <div class="profileData">
+            <h3>Currently managing: {{user.local.artist}}</h3>
+              <h4>Your Existing Tours</h4>
+              <div ng-repeat="userTours in profileTourData" ng-click="showUserTour($index)">
+                <p>Tour Name: {{userTours.tourName}}</p>
+                  <ul class="userTourDates" ng-repeat="userDates in userTours.date" ng-show="shouldShow($parent.$index)" >
+                    <li>Date: {{userDates.date | date: shortDate}}</li>
+                    <li>Venue: {{userDates.venue}}</li>
+                  </ul>
+              </div> 
+            </div>
+    </div>
+  </div> 
+      <div class="col-xs-6 tourForm">
+      <a href="/logout"><button type="button" class="btn btn-standard logoutBtn">Log Out</button></a>
+          <h4 ng-click="addTour()" class="tourAddRow">Add a new Tour <i class="fa fa-caret-square-o-up" ng-show="arrowUp"></i><i class="fa fa-caret-square-o-down" ng-hide="arrowDown"></i>
+          </h4>
           <form class="addTourForm" ng-submit="createTour()" ng-hide="tourForm">
               <fieldset class="form-group">
               <label for="tourName">Tour Name</label>
@@ -67,4 +53,23 @@
           <p ng-hide="tourAdded">Thank you!</p>
         </div>
     </div>
-  </div>
+           <!-- <p>You last logged in {{date}}</p> -->
+    <!-- PROFILE EDITS -->
+    <!-- <div class="container"> -->
+      <!-- <div class="row col-xs-6">
+        <h5 ng-click="profileUpdate">Update Your Profile:</h5>
+      </div>
+        <form ng-submit="tourData" ng-hide="updateForm">
+            <fieldset class="form-group">
+            <label for="updateEmail">Email</label>
+            <input type="text" class="form-control" id="updateEmail" ng-model="update.email">
+          </fieldset>
+          <fieldset class="form-group">
+            <label for="updateLogo">Update Your Logo</label>
+            <input type="upload" class="form-control" id="updateLogo" ng-model="update.logo">
+          </fieldset>
+          <input type="submit" class="btn btn-primary">
+        </form>
+        <p ng-show="">Thank you!</p>
+    </div> -->
+    <!-- TOUR DATES -->

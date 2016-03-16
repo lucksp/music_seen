@@ -1,5 +1,5 @@
 angular.module('musicSeen')
-    .controller('controlLocals',['$scope', '$http', function($scope, $http){
+    .controller('controlLocals',['$scope', '$http', '$filter', function($scope, $http, $filter){
         
         angular.extend($scope, {
             center: {
@@ -10,6 +10,8 @@ angular.module('musicSeen')
                     scrollWheelZoom: false
             }
         });
+
+        $scope.localSearch = ''
 
         $scope.markers = []
         $http.get('/tourDates').then(function (responseData) {
@@ -53,5 +55,23 @@ angular.module('musicSeen')
                 $scope.page++
             }
         })
+
+        $scope.localList = true
+        $scope.showLocalList = function(){
+            $scope.localList = ! $scope.localList
+        }
+
+
+        // $scope.$watch('localSearch', function (newVal, oldVal) {
+        //             // Watch gets fired on scope initialization and when empty so differentiate:
+        //             if (newVal !== oldVal && newVal !== '') {
+        //                 // Has searchvalue, apply sourcedata, propertyname and searchstring to filter
+        //                 // and assign return value of filter to geojson 
+        //                 $scope.markers = $filter('filter')($scope.data, 'NAME', newVal);
+        //             } else {
+        //                 // Search has been initialized or emptied, assign sourcedata to geojsonobject
+        //                 $scope.markers = markers;
+        //             }
+        //         }, true);
         
 }]);
