@@ -11,7 +11,7 @@ angular.module('musicSeen')
             }
         });
 
-        $scope.localSearch = ''
+        $scope.localSearch
 
         $scope.markers = []
         $http.get('/tourDates').then(function (responseData) {
@@ -48,7 +48,9 @@ angular.module('musicSeen')
             };
 
             $scope.datesLess = function(){
-                $scope.page--
+                if ($scope.page > 0){
+                    $scope.page--
+                }
             }
 
             $scope.datesMore = function(){

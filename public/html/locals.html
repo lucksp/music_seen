@@ -12,7 +12,7 @@
 	    	      </div>      
 	    	    </div>
 	    	  </form>
-						<div ng-repeat="date in itemsPaginated() | limitTo: 6 | orderBy: '-date':true | filter:localSearch" class="repeatCol">
+						<div ng-repeat="date in itemsPaginated() | filter:localSearch | limitTo: 6 | orderBy: '-date':true" class="repeatCol">
 								<ul>
 									<li class="colDate">{{date.date | date: 'shortDate'}}</li>
 									<li class="colArtist">{{date.artist}}</li>

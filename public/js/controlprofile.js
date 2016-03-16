@@ -40,7 +40,7 @@ angular.module('musicSeen')
 	          $scope.tourAdded = !$scope.tourAdded
 
 	          $scope.tour = {}
-	          $scope.tour.tourDates = {}
+	          $scope.tour.tourDates = [{}]
 	}
 
 	$scope.addMoreDates = function(){
