@@ -35,7 +35,7 @@ angular.module('musicSeen')
                         })
                     }                        
             }
-            console.log($scope.markers)
+            // console.log($scope.markers)
 
             $scope.page = 0;
             $scope.items = $scope.markers
@@ -57,11 +57,5 @@ angular.module('musicSeen')
             $scope.datesMore = function(){
                 $scope.page++
             }
-        })
-
-        $scope.localList = true
-        $scope.showLocalList = function(){
-            $scope.localList = ! $scope.localList
-        }
-        
+        })        
 }]);
