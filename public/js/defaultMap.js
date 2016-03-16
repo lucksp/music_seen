@@ -1,5 +1,5 @@
 angular.module('musicSeen')
-    .controller('defaultmap',['$scope', '$http', 'factoryInsight', 'leafletData', function($scope, $http, factoryInsight, leafletData){
+    .controller('defaultmap',['$scope', '$http', 'leafletData', function($scope, $http, leafletData){
 
     angular.extend($scope, {
         center: {

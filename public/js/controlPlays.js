@@ -1,6 +1,19 @@
 angular.module('musicSeen')
     .controller('controlPlays',['$scope', '$http', 'leafletData', function($scope, $http, leafletData){
 
+      $scope.$on("leafletDirectiveGeoJson.myMap.click", function(ev, leafletPayload) {
+          countryClick(leafletPayload.leafletObject, leafletPayload.leafletEvent);
+      });
+
+      $scope.listenMessage = false
+
+      function countryClick(country, event) {
+         $scope.selectedCountry = country.feature
+         console.log('I am a click event:', event, 'Country Name =', $scope.selectedCountry.properties)
+         $scope.listenMessage = true
+
+      }
+
     angular.extend($scope, {
         center: {
                 lat: 27.4086665,
@@ -14,13 +27,7 @@ angular.module('musicSeen')
                 },
         defaults: {
                 scrollWheelZoom: false
-                },
-        // events: {
-        //         map:{
-        //             enable: ['click']
-        //             logic:  'emit'
-        //             }
-        //         }
+                }
     });
 
   $scope.playsGeojson = function() {
@@ -69,6 +76,9 @@ angular.module('musicSeen')
                   }
                   else if (feature.properties.listeners >= 1000000) {
                     myStyles.fillColor = "#F33B2A"
+                  }
+                  else {
+                    myStyles.fillColor = "#5e5e5e"
                   }
                   return myStyles
                 }

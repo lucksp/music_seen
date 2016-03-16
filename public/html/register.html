@@ -1,5 +1,5 @@
 <div class="row col-xs-6 registerForm">
-	<form ng-submit="register()">
+	<form ng-submit="register()" autocomplete="off">
 	  <fieldset class="form-group">
 	    <label for="registerUserName">Requested User Name</label>
 	    <input type="text" class="form-control" id="registerUserName" ng-model="registerForm.username">
@@ -18,4 +18,7 @@
 	  </fieldset>
 	    <input type="submit" class="btn btn-primary">
 	</form>
+		<div class="row col-xs-12 clickHereLogin">
+			<h4><a href="#/login">Click Here</a> to Login.</h4>
+		</div>
 </div>

@@ -1,5 +1,5 @@
 angular.module('musicSeen')
-    .controller('controlInsights',['$scope', '$http', 'factoryInsight', 'leafletData', function($scope, $http, factoryInsight, leafletData){
+    .controller('controlInsights',['$scope', '$http', 'leafletData', function($scope, $http, leafletData){
 
       $scope.templates =
           [ { name: 'Select Your Map', 

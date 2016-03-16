@@ -1,17 +1,21 @@
   
-<div class="container">
-  <div class="row col-xs-12">
-    <h3>Welcome back, {{user.local.username}}</h3>
+<div class="container profileDiv">
+  <div class="row col-xs-12 ">
+    <h2 class="profileHead">Welcome back, {{user.local.username}}</h2>
   </div>
-  <div class="row col-xs-6 profile">
-        <img src="img/default_user.png">
-        <h4>Your Existing Tours</h4>
-
-      </div>
+  <div class="row col-xs-12 profileImg">
+    <img src="img/default_user.png">
+  </div>
+  <div class="row col-xs-12 profileData">
+      <a href="/logout"><button>Log Out</button></a>
+        <h3>Currently managing: {{user.local.artist}}</h3>
+          <h4>Your Existing Tours</h4>
+            <ul class="userTourData" ng-repeat="userTours in profileTourData">
+              <li>Tour Name: {{userTours.name}}</li>
+              <li>Venue: {{userTours.name}}</li>
+            </ul>
+  </div>
             <!-- <p>You last logged in {{date}}</p> -->
-  <div>
-        <a href="/logout"><button>Log Out</button></a>
-  </div>
     <!-- PROFILE EDITS -->
     <!-- <div class="container"> -->
       <!-- <div class="row col-xs-6">

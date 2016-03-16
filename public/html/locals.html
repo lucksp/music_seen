@@ -2,18 +2,19 @@
             <h3>Your Local Music, Scene</h3>
     <div class="container-fluid">
     	<div class="locals">
-    	<div class="localCol">
-    		<h4>Tour Date Column</h4>
-				<div ng-repeat="date in markers" class="">
-						<ul>
-							<li>{{date.date | date: 'shortDate'}}</li>
-							<li>{{date.artist}}</li>
-							<li>{{date.tourName}}</li>
-							<li>{{date.venue}}</li>
-							<li>{{date.addy}}</li>
-						</ul>
-				</div>
-		</div>
-			<leaflet lf-center="center" defaults="defaults" markers="markers" width="90%" height="800px"></leaflet>
+	    	<div class="localCol col-xs-2">
+	    		<h4>Find Your Scene</h4>
+					<div ng-repeat="date in itemsPaginated() | limitTo: 6 | orderBy: 'date.date':true" class="repeatCol">
+							<ul>
+								<li class="colDate">{{date.date | date: 'shortDate'}}</li>
+								<li class="colArtist">{{date.artist}}</li>
+								<li class="colTourName">{{date.tourName}}</li>
+								<li class="colVenue">{{date.venue}}: {{date.addy}}</li>
+							</ul>
+						</div>
+					<i class="fa fa-arrow-circle-o-left" ng-click="datesLess()"></i><i class="fa fa-arrow-circle-o-right" ng-click="datesMore()"></i>
+			</div>
+				<leaflet lf-center="center" defaults="defaults" markers="markers" width="90%" height="800px"></leaflet>
+			</div>
     </div>
 </div>

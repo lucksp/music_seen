@@ -1,9 +1,10 @@
 angular.module('musicSeen')
     .controller('controlProfile',['$scope', '$http', function($scope, $http){
 
-	$http.get('/profile').then(function(responseData){
-		$scope.user = responseData.data.user
-		// console.log($scope.user)
+	$http.get('/profile').then(function(responseUserData){
+		// console.log('PROFILE RESPONSE DATA', responseUserData.data.user)
+
+		$scope.user = responseUserData.data.user
 	})
 
 	$scope.tour = {
@@ -17,13 +18,13 @@ angular.module('musicSeen')
 
 	$scope.tourAdded = true
 	$scope.createTour = function(){
-		console.log($scope.tour)
+		console.log('$scope.tour ===', $scope.tour)
 		$http({
 	                method : 'POST',
 	                url    : '/tours',
 	                data   : $scope.tour
 	            }).then(function(returnData){
-	                console.log(returnData.data)
+	                console.log('CreateTour() : returnData.data', returnData.data)
 	                if ( returnData.data.error ){
 	                	$scope.error = 'The tour did not submit'
 	                	console.log($scope.error)
@@ -41,7 +42,24 @@ angular.module('musicSeen')
 	$scope.addMoreDates = function(){
 		$scope.tour.tourDates.push({})
 		// $scope.tourForm = !$scope.tourForm
-
 	}
+
+	$scope.profileTourData = []
+	$http.get('/tourDates').then(function (responseTourData) {
+	    console.log('TOUR DATE RESPONSE DATA:', responseTourData)
+	    for (var i = 0; i < responseTourData.data.length; i++){
+	    		console.log('User ID = ', $scope.user._id, 'Creator ID =', responseTourData.data[i].creator)
+	    	if ($scope.user._id === responseTourData.data[i].creator){
+	            $scope.profileTourData.push({
+	                tourName	: responseTourData.data[i].tourName,
+	                artist		: responseTourData.data[i].artist,
+	                date 		: responseTourData.data[i].tourDates[0].date,
+	                venue 		: responseTourData.data[i].tourDates[0].venue,
+	                addy 		: responseTourData.data[i].tourDates[0].addy,
+	                })
+	            console.log('$scope.profileTourData = ', $scope.profileTourData)
+	        }
+	    }
+	})
 
 }]);

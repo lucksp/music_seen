@@ -26,9 +26,47 @@ body {
     -webkit-font-smoothing: antialiased !important;
 }
 
+.rw-sentence span {
+    white-space: nowrap;
+    font-size: 100%;
+    font-weight: normal;
+}
+
+.rw-words {
+    display: inline;
+    text-indent: 10px;
+}
+
+.rw-words span {
+    position: absolute;
+    opacity: 0;
+    /*overflow: hidden;*/
+    width: 100%;
+    font-weight: bold; 
+}
+
+.rw-words-1 span {
+    animation: rotateWordsFirst 12s linear infinite 0s;
+}
+
+.rw-words span:nth-child(2) { 
+    animation-delay: 6s; 
+}
+
+@keyframes rotateWordsFirst {
+    0% { opacity: 0; animation-timing-function: ease; height: 0px; }
+    15% { opacity: .1; height: 60px; }
+    40% { opacity: .75; height: 60px; }
+    50% { opacity: 1; height: 60px; }
+    60% { opacity: .5; height: 60px; }
+    85% { opacity: .1; height: 60px; }
+    100% { opacity: 0; height: 60px;}
+}
+
 .shellDiv {
     height: 100vh;
     padding-top: 150px;
+    padding-right: 0;
 }
 
 .container-fluid {
@@ -115,7 +153,7 @@ body {
 }
 
 .navbar-default .navbar-nav>li>a:hover {
-    color: rgb(131, 217, 42);
+    color: #76c623;
 }
 
 /*INDEX*/
@@ -133,11 +171,41 @@ body {
     color: red
 }
 
+.form-group input {
+    background-color: transparent;
+    border-radius: 0;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 2px solid black;
+    box-shadow: none;
+}
+
+.form-group input:focus {
+    background-color: transparent;
+    border-radius: 0;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 2px solid #76c623;
+    box-shadow: none;
+}
+
+.input:-webkit-autofill {
+    background-color: red;
+}
  /*INSIGHTS */
 
  .insights {
-    position: relative;
-    padding-top: 100px;
+     position: relative;
+     padding: 0 100px 0 100px;
+     left: 0;
+     width: 100%;
+     margin: 0;
+ }
+
+ .insights h2, h3 {
+     text-align: center;
  }
 
  select {
@@ -210,6 +278,10 @@ body {
     box-shadow: 0 0 15px rgba(0,0,0,0.5);
 }
 
+.leaflet-control-attribution {
+    display: none;
+}
+
 /* LOCALS */
 .locals {
     position: relative;
@@ -218,6 +290,11 @@ body {
 
 .mapDiv {
     text-align: center;
+    padding: 0;  
+}
+
+.mapDiv .container-fluid {
+    padding: 0;  
 }
 
 /*.localPopup {
@@ -229,9 +306,54 @@ body {
     padding: 10px;
 }
 
+.localCol {
+    margin: 0 15px;
+    padding: 0;
+}
+
 .localCol ul {
     list-style-type: none;
-    padding: 10px;
+    padding: 0 15px;
+    margin: 0;
+}
+
+.repeatCol {
+    padding: 15px 0;
+    margin-bottom: 15px;
+    background-color: #fbfcfc;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+.localCol li {
+}
+
+.colDate {
+    font-size: 2.25rem;
+    font-weight: bold;
+}
+
+.colArtist {
+    font-size: 2rem;
+}
+
+.colTourName, .colVenue {
+    font-size: 1.75;
+}
+
+.fa-arrow-circle-o-left, .fa-arrow-circle-o-right {
+    font-size: 5rem;
+    color: rgb(131, 217, 42);
+    /*text-shadow: 0 0 5px rgba(0,0,0,0.1);*/
+}
+
+.fa-arrow-circle-o-left {
+    float: left;
+    margin-left: 2rem; 
+}
+
+.fa-arrow-circle-o-right {
+    float: right;
+    margin-right: 2rem; 
 }
 
 .angular-leaflet-map {
@@ -244,43 +366,42 @@ body {
     padding: 0 15px;
 }
 
-/*.loginForm, .registerForm {
+.loginForm, .registerForm {
     margin-left: 150px;
-}*/
+}
 
- PROFILE PAGE 
 
-.profile {
+.clickHereLogin, .clickHereRegister {
+    text-align: right;
+}
+
+/*PROFILE PAGE */
+
+.profileDiv h2 {
+    text-align: center;
+}
+
+.profileImg {
     position: relative;
-    top: 0;
-    right: 0;
     float: right;
     text-align: right;
 }
 
-.profile img {
+.profileImg img {
     width: 150px;
     height: 150px;
 }
 
-.insights {
-    position: relative;
-    padding: 0 100px 0 100px;
-    left: 0;
-    width: 100%;
-    margin: 0;
+.profileData {
+    text-align: right;
 }
 
-.insights h2, h3 {
-    text-align: center;
+.profileData h3 {
+    text-align: right;
 }
 
 .defaultDiv {
     padding: 0;
-}
-
-.leaflet-control-attribution {
-    display: none;
 }
 
 .tourAddRow {
@@ -294,6 +415,10 @@ body {
 
 .addMoreDatesBtn {
     float: right;
+}
+
+.userTourData {
+
 }
 
  /*FOOTER */
