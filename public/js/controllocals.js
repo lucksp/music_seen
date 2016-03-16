@@ -4,7 +4,7 @@ angular.module('musicSeen')
         angular.extend($scope, {
             center: {
                 autoDiscover: true,
-                zoom: 10
+                zoom: 5
             },
             defaults: {
                     scrollWheelZoom: false

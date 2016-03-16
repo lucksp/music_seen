@@ -1,5 +1,5 @@
 <div class="row col-xs-12 mapDiv">
-            <h3>Your Local Music, Scene</h3>
+            <h3>Your Music, Your Scene</h3>
     <div class="container-fluid">
     	<div class="locals">
     	<h4>Find Your Scene</h4>
@@ -12,7 +12,7 @@
 	    	      </div>      
 	    	    </div>
 	    	  </form>
-						<div ng-repeat="date in itemsPaginated() | filter:localSearch | limitTo: 6 | orderBy: '-date':true" class="repeatCol">
+						<div ng-repeat="date in itemsPaginated() | filter:localSearch | limitTo: 6 | orderBy: '-date.date':true" class="repeatCol">
 								<ul>
 									<li class="colDate">{{date.date | date: 'shortDate'}}</li>
 									<li class="colArtist">{{date.artist}}</li>
