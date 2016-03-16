@@ -14,6 +14,7 @@ angular.module('musicSeen')
 	                }
 	                if ( returnData.data.success ) {
 	                	 { window.location.href="#/profile/" }
+	                	 $scope.registerForm = {}
 	                } 
 	            })
 	}
