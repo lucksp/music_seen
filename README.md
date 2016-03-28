@@ -8,3 +8,5 @@ View trends of music genres and number of plays per country by geography.
 
 ##Scene:
 Locate your favorite bands by geographic map.
+
+Developer Tools: MEAN Stack (MongoDB, express.js, AngularJS, Node.js), RESTful API integration with LastFM, GeoJSON, CSS3, HTML5, Bootstrap, served from Digital Ocean.
