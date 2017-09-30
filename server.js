@@ -11,17 +11,22 @@ var passportlocal 	= require('passport-local')
 var cookieParser 	= require('cookie-parser');
 var bodyParser   	= require('body-parser');
 var session      	= require('express-session');
-var configDB 		= require('./config/database.js');
 var apiRoutes 		= require('./app/routes.js');
 
 // configuration ===============================================================
-mongoose.connect(configDB.url)
+var promise = mongoose.connect('mongodb://localhost/musicseen', {
+    useMongoClient: true,
+    /* other options */
+  });
+  promise.then(function(db) {
+    db.model();
+  });
 // ***** HOW TO DO CHECK ON IF DB CONNECTION THROWS ERR & INSERT console.log()
 
 require('./config/passport')(passport); // pass passport for configuration
 
 // set up our express application
-app.use(express.static(__dirname + '/public'))
+app.use(express.static(__dirname + '/public'));
 
 // app.use(morgan('dev')); // log every request to the console
 app.use(cookieParser()); // read cookies (needed for auth)
@@ -34,9 +39,9 @@ app.use(passport.session()); // persistent login sessions
 // app.use(flash()); // use connect-flash for flash messages stored in session
 
 // routes ======================================================================
-app.use('/', apiRoutes)
+app.use('/', apiRoutes);
 
-app.use('/api/lib', apiRoutes) // Initialize routes to use
+app.use('/api/lib', apiRoutes); // Initialize routes to use
 
 // require('./app/routes.js')(app, passport); // load our routes and pass in our app and fully configured passport
 
